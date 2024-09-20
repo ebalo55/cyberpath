@@ -11,9 +11,26 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/mdx": "^3.1.7",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.1",
+    "@astrolib/seo": "1.0.0-beta.6",
+    "@fontsource-variable/nunito": "^5.1.0",
+    "@headlessui/react": "^2.1.8",
+    "@heroicons/react": "^2.1.5",
+    "@sentry/astro": "^8.30.0",
+    "@spotlightjs/astro": "^2.1.9",
     "astro": "^4.15.8",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.5.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.12",
     "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0"
   }
 }
