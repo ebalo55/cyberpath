@@ -1,6 +1,7 @@
 ---
 // Supports weights 200-900
 import "@fontsource-variable/nunito";
+import Header from "@components/header.astro";
 
 interface Props {
     title: string;
@@ -20,12 +21,13 @@ const { title } = Astro.props;
           type="image/svg+xml"
           href="/favicon.svg"
     />
+    <link rel="sitemap"
+          href="/sitemap-index.xml"
+    />
     <title>{ title }</title>
-        <link rel="sitemap"
-              href="/sitemap-index.xml"
-        />
-        </head>
-        <body class="font-sans bg-gray-50">
-            <slot />
-        </body>
+</head>
+<body class="font-sans bg-gray-50 text-zinc-900 scroll-smooth">
+    <Header />
+    <slot />
+</body>
 </html>
