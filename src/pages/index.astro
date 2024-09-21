@@ -1,10 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Hero from "@components/hero.astro";
+import Hero from "src/components/astro/landing/hero.astro";
+import Faq from "src/components/astro/landing/faq.astro";
+import Newsletter from "src/components/astro/landing/newsletter.astro";
 ---
 
 <Layout title="CyberPath">
-    <main>
         <Hero />
-    </main>
+    <Newsletter />
+    <Faq />
 </Layout>

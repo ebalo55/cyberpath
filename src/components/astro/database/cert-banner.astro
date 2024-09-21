@@ -1,0 +1,19 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+interface Props {
+    banner: ImageMetadata;
+    title: string;
+}
+
+const {
+          banner,
+          title,
+      } = Astro.props;
+---
+
+<Image
+    src={ banner }
+    alt={ title }
+    class="row-start-1 col-span-full h-[32rem] object-cover object-center mb-8"
+/>

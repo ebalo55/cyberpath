@@ -1,0 +1,175 @@
+---
+import { getCollection } from "astro:content";
+import {
+    shuffle,
+    title,
+} from "radash";
+import ColCertificationPath from "src/components/astro/database/records-table/col-certification-path.astro";
+
+const random_certs = shuffle(await getCollection("certifications")).slice(0, 5);
+---
+
+<div class="relative isolate pt-14">
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+         aria-hidden="true"
+    >
+        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+        ></div>
+    </div>
+    <div class="py-24 sm:py-32 lg:pb-40">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                    Your guide to Cybersecurity Certifications and Training
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Whether you're just starting or you're an industry expert, discover the certifications that can
+                    elevate your career.
+                    Explore paths, costs, and details, all curated to help you succeed in the cybersecurity world.
+                </p>
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <a href="/database"
+                       class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        Get started
+                    </a>
+                    <a href="#selected-for-you"
+                       class="text-sm font-semibold leading-6 text-gray-900 flex items-center"
+                    >
+                        Selected for you
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="14"
+                             height="14"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down ml-2"
+                             aria-hidden="true"
+                        >
+                            <path stroke="none"
+                                  d="M0 0h24v24H0z"
+                                  fill="none"
+                            />
+                            <path d="M12 5l0 14" />
+                            <path d="M18 13l-6 6" />
+                            <path d="M6 13l6 6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-16 flow-root sm:mt-24">
+                <div class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                    <table class="w-full text-left bg-gray-50 rounded-lg"
+                           id="selected-for-you"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="py-5 px-6">Certification</th>
+                                <th class="hidden sm:table-cell py-5 px-6">Certification paths</th>
+                                <th class="py-5 px-6 text-right">More details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                random_certs.map((cert, i, arr) => (
+                                    <tr class:list={ [
+                                        { "border-b": i !== arr.length },
+                                    ] }
+                                    >
+                                        <td class="relative py-5 px-6">
+                                            <div class="flex gap-x-6">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="20"
+                                                     height="20"
+                                                     viewBox="0 0 24 24"
+                                                     fill="none"
+                                                     stroke="currentColor"
+                                                     stroke-width="2"
+                                                     stroke-linecap="round"
+                                                     stroke-linejoin="round"
+                                                     class="hidden h-6 w-5 flex-none text-gray-400 sm:block"
+                                                >
+                                                    <path stroke="none"
+                                                          d="M0 0h24v24H0z"
+                                                          fill="none"
+                                                    />
+                                                    <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                                                </svg>
+                                                <div class="flex-auto">
+                                                    <div class="flex items-start gap-x-3">
+                                                        <div class="text-sm font-medium leading-6 text-gray-900">
+                                                            { cert.data.title }
+                                                        </div>
+                                                        <div class="rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium
+                                                            text-indigo-700 ring-1 ring-inset ring-indigo-600/20"
+                                                        >
+                                                            { cert.data.acronym }
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-1 text-xs leading-5 text-gray-500">
+                                                        { title(cert.slug.split("/")[0]) }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <ColCertificationPath cert={ cert } />
+                                        <td class="py-5 px-6 text-right">
+                                            <div class="flex justify-end">
+                                                <a href={ `/database/${ cert.slug }` }
+                                                   class="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500 flex items-center"
+                                                >
+                                                    Expand
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                         width="14"
+                                                         height="14"
+                                                         viewBox="0 0 24 24"
+                                                         fill="none"
+                                                         stroke="currentColor"
+                                                         stroke-width="2"
+                                                         stroke-linecap="round"
+                                                         stroke-linejoin="round"
+                                                         class="animate-bounce-horizontal ml-2"
+                                                         aria-hidden="true"
+                                                    >
+                                                        <path stroke="none"
+                                                              d="M0 0h24v24H0z"
+                                                              fill="none"
+                                                        />
+                                                        <path d="M9 6l6 6l-6 6" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="mt-1 text-xs leading-5 text-gray-500tabular-nums text-right">
+                                                Price
+                                                <span class="text-gray-900 font-mono">
+                                                    { Number.isNaN(+cert.data.price)
+                                                      ? cert.data.price.padStart(8, " ")
+                                                          .replace(/\s/g, "\u00A0")
+                                                      : (+cert.data.price).toFixed(2)
+                                                          .padStart(8, " ")
+                                                          .replace(/\s/g, "\u00A0") }
+                                                    { cert.data.currency || "\u00A0" }
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+         aria-hidden="true"
+    >
+        <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+        ></div>
+    </div>
+</div>

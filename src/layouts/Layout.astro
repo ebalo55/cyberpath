@@ -1,7 +1,8 @@
 ---
 // Supports weights 200-900
 import "@fontsource-variable/nunito";
-import Header from "@components/header.astro";
+import Header from "src/components/astro/common/header.astro";
+import Footer from "src/components/astro/common/footer.astro";
 
 interface Props {
     title: string;
@@ -11,7 +12,9 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en"
+      class="scroll-smooth scroll-pt-32"
+>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport"
@@ -26,8 +29,11 @@ const { title } = Astro.props;
     />
     <title>{ title }</title>
 </head>
-<body class="font-sans bg-gray-50 text-zinc-900 scroll-smooth">
+<body class="font-sans bg-gray-50 text-zinc-900 overflow-x-hidden">
     <Header />
-    <slot />
+    <main>
+        <slot />
+    </main>
+    <Footer />
 </body>
 </html>

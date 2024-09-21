@@ -11,6 +11,21 @@ export default {
       fontFamily: {
         sans: ["Nunito Variable", ...defaultTheme.fontFamily.sans],
       },
+      animation: {
+        "bounce-horizontal": `bounce-horizontal 2s infinite`,
+      },
+      keyframes: {
+        "bounce-horizontal": {
+          "0%, 100%": {
+            transform: "translateX(-25%)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "none",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
+      },
     },
   },
   plugins: [forms, typography],
