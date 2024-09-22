@@ -108,53 +108,39 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                     return;
                 }
 
-                try {
-                    const all_data: CertificationMetadataCollection = await data.json();
-                    const total_pages = Math.ceil(all_data.length / pagination.per_page);
+                const all_data: CertificationMetadataCollection = await data.json();
+                const total_pages = Math.ceil(all_data.length / pagination.per_page);
 
-                    // store the raw data as an empty filter is not allowed in fuse.js
-                    set_all_raw_data(all_data);
+                // store the raw data as an empty filter is not allowed in fuse.js
+                set_all_raw_data(all_data);
 
-                    // If the page number is greater than the total number of pages
-                    // then set the page number to 1
-                    if (page && +page > total_pages) {
-                        set_pagination((prev) => ({
-                            ...prev,
-                            page: 1,
-                            total_pages,
-                        }));
-                    }
-                    else {
-                        // Set the total number of pages keeping the page number the same
-                        set_pagination((prev) => ({
-                            ...prev,
-                            total_pages,
-                        }));
-                    }
-
-                    // we have the pre-computed index, so we can just load it into fuse and enjoy the speed
-                    const parsed_index = Fuse.parseIndex<CertificationMetadata>(await index.json());
-
-                    set_all_data(
-                        new Fuse(
-                            all_data,
-                            FuseConfig,
-                            parsed_index,
-                        ),
-                    );
+                // If the page number is greater than the total number of pages
+                // then set the page number to 1
+                if (page && +page > total_pages) {
+                    set_pagination((prev) => ({
+                        ...prev,
+                        page: 1,
+                        total_pages,
+                    }));
                 }
-                catch (e) {
-                    if (e instanceof Error) {
-                        console.error(e.message);
-                        set_error(e.message);
-                    }
-                    else {
-                        console.error(e);
-                        set_error(
-                            "An unexpected error occurred, try again in a few minutes.",
-                        );
-                    }
+                else {
+                    // Set the total number of pages keeping the page number the same
+                    set_pagination((prev) => ({
+                        ...prev,
+                        total_pages,
+                    }));
                 }
+
+                // we have the pre-computed index, so we can just load it into fuse and enjoy the speed
+                const parsed_index = Fuse.parseIndex<CertificationMetadata>(await index.json());
+
+                set_all_data(
+                    new Fuse(
+                        all_data,
+                        FuseConfig,
+                        parsed_index,
+                    ),
+                );
             })
             .catch((e) => {
                 console.error(e);

@@ -9,6 +9,9 @@
             ],
             "@layouts/*": [
                 "src/layouts/*"
+            ],
+            "@assets/*": [
+                "src/assets/*"
             ]
         },
         "jsxImportSource": "react"
