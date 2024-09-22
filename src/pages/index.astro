@@ -3,10 +3,30 @@ import Layout from "@layouts/Layout.astro";
 import Hero from "src/components/astro/landing/hero.astro";
 import Faq from "src/components/astro/landing/faq.astro";
 import Newsletter from "src/components/astro/landing/newsletter.astro";
+import { AstroSeo } from "@astrolib/seo";
 ---
 
 <Layout title="CyberPath">
-        <Hero />
+    <AstroSeo
+            title="CyberPath"
+            canonical="https://cyberpath-hq.com/"
+            description="Explore CyberPath’s free database of cybersecurity certifications. Find career paths, costs, and detailed info to advance your cybersecurity career."
+            openGraph={ {
+                url:         "https://cyberpath-hq.com/",
+                title:       "CyberPath",
+                description: "Explore CyberPath’s free database of cybersecurity certifications. Find career paths, costs, and detailed info to advance your cybersecurity career.",
+                site_name:   "CyberPath",
+                images:      [
+                    {
+                        url:    "https://cyberpath-hq.com/CyberPath-og.webp",
+                        width:  1920,
+                        height: 933,
+                        alt:    "CyberPath - Explore Cybersecurity Certifications",
+                    },
+                ],
+            } }
+    />
+    <Hero />
     <Newsletter />
     <Faq />
 </Layout>

@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import { CareerPathsData } from "src/lib/career-paths";
+import type { CareerPathsName } from "src/lib/career-paths";
+import CardOverlay from "./card-overlay.astro";
+
+interface Props {
+    career_path: CareerPathsName[number],
+}
+
+const { career_path } = Astro.props;
+---
+
+<Image src={ CareerPathsData[career_path].image }
+       alt={ career_path }
+       class="object-cover object-center transition-all duration-300 group-hover:scale-105 max-w-full"
+/>
+<CardOverlay />
+<div class="flex items-end p-6 sm:absolute sm:inset-0">
+    <div>
+        <h3 class="font-semibold text-white text-xl">
+            <a href="#">
+                { career_path }
+            </a>
+        </h3>
+        <p aria-hidden="true"
+           class="mt-1 text-sm text-white"
+        >
+            { CareerPathsData[career_path].description }
+        </p>
+        <small class="text-xs text-indigo-300 hover:underline"
+               set:html={ CareerPathsData[career_path].attribution }
+        />
+    </div>
+</div>

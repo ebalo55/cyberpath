@@ -1,5 +1,9 @@
 // 1. Import utilities from `astro:content`
-import { defineCollection, z } from "astro:content";
+import {
+    defineCollection,
+    z,
+} from "astro:content";
+import { CareerPathsList } from "src/lib/career-paths.ts";
 
 // 2. Define your collection(s)
 const blogCollection = defineCollection({
@@ -13,7 +17,7 @@ const blogCollection = defineCollection({
       reference: z.string(),
       aliases: z.array(z.string()).optional(),
       draft: z.boolean().default(false),
-      career_paths: z.array(z.string()),
+        career_paths: z.array(z.enum(CareerPathsList)),
       price: z.string(),
       currency: z.string(),
     }),

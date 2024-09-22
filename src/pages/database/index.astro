@@ -1,10 +1,30 @@
 ---
+import { AstroSeo } from "@astrolib/seo";
 import Layout from "src/layouts/Layout.astro";
 import { ReactiveDatatable } from "src/components/astro/database/reactive-datatable";
 import RowLoadingState from "@components/astro/database/records-table/row-loading-state.astro";
 ---
 
 <Layout title="CyberPath | Database">
+    <AstroSeo
+            title="CyberPath | Database"
+            canonical="https://cyberpath-hq.com/database/"
+            description="Access the full database of certifications and exams. Search, filter, and sort the data to find the information you need, remember, it's Free!"
+            openGraph={ {
+                url:         "https://cyberpath-hq.com/database/",
+                title:       "CyberPath | Database",
+                description: "Access the full database of certifications and exams. Search, filter, and sort the data to find the information you need, remember, it's Free!",
+                site_name:   "CyberPath",
+                images:      [
+                    {
+                        url:    "https://cyberpath-hq.com/CyberPath-og.webp",
+                        width:  1920,
+                        height: 933,
+                        alt:    "CyberPath - Explore Cybersecurity Certifications",
+                    },
+                ],
+            } }
+    />
     <div class="relative isolate py-14">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
              aria-hidden="true"

@@ -1,5 +1,7 @@
 ---
 import { HeaderSearchBar } from "src/components/astro/common/header-search-bar";
+import logo from "@assets/logo.svg";
+import { Image } from "astro:assets";
 ---
 
 <header class="z-50 relative">
@@ -9,11 +11,14 @@ import { HeaderSearchBar } from "src/components/astro/common/header-search-bar";
         <a href="/"
            class="-m-1.5 p-1.5"
         >
-            <span class="sr-only">CyberPath</span>
-            <img class="h-8 w-auto"
-                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                 alt="CyberPath"
-            >
+            <span class="sr-only">
+                CyberPath
+            </span>
+            <Image src={ logo }
+                   alt="CyberPath"
+                   class="h-8 w-auto"
+                   loading="eager"
+            />
         </a>
         <div class="flex lg:hidden">
             <button type="button"
@@ -65,11 +70,14 @@ import { HeaderSearchBar } from "src/components/astro/common/header-search-bar";
                 <a href="/"
                    class="-m-1.5 p-1.5"
                 >
-                    <span class="sr-only">CyberPath</span>
-                    <img class="h-8 w-auto"
-                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                         alt=""
-                    >
+                    <span class="sr-only">
+                        CyberPath
+                    </span>
+                    <Image src={ logo }
+                           alt="CyberPath"
+                           class="h-8 w-auto"
+                           loading="eager"
+                    />
                 </a>
                 <button type="button"
                         class="-m-2.5 rounded-md p-2.5 text-gray-700"

@@ -12,20 +12,23 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://cyberpath-hq.com",
-  integrations: [
-    tailwind({
-      nesting: true,
-    }),
-    sentry({
-      enabled: import.meta.env.DEV,
-    }),
-    spotlightjs(),
-    react(),
-    sitemap(),
-    mdx(),
-  ],
-  build: {
-    assets: "assets",
-  },
+    site:         "https://cyberpath-hq.com",
+    integrations: [
+        tailwind({
+            nesting: true,
+        }),
+        sentry({
+            enabled: import.meta.env.DEV,
+        }),
+        spotlightjs(),
+        react(),
+        sitemap(),
+        mdx({
+            extendMarkdownConfig: true,
+            gfm:                  true,
+        }),
+    ],
+    build:        {
+        assets: "assets",
+    },
 });
