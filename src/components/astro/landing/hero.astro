@@ -1,10 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import {
+    omit,
     shuffle,
     title,
 } from "radash";
-import ColCertificationPath from "src/components/astro/database/records-table/col-certification-path.astro";
+import { ColCertificationPath } from "src/components/astro/database/records-table/col-certification-path";
+import { ColCertification } from "@components/astro/database/records-table/col-certification";
+import { ColMoreDetails } from "src/components/astro/database/records-table/col-more-details";
 
 const random_certs = shuffle(await getCollection("certifications")).slice(0, 5);
 ---
@@ -76,87 +79,30 @@ const random_certs = shuffle(await getCollection("certifications")).slice(0, 5);
                         <tbody>
                             {
                                 random_certs.map((cert, i, arr) => (
-                                    <tr class:list={ [
-                                        { "border-b": i !== arr.length },
-                                    ] }
-                                    >
-                                        <td class="relative py-5 px-6">
-                                            <div class="flex gap-x-6">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                     width="20"
-                                                     height="20"
-                                                     viewBox="0 0 24 24"
-                                                     fill="none"
-                                                     stroke="currentColor"
-                                                     stroke-width="2"
-                                                     stroke-linecap="round"
-                                                     stroke-linejoin="round"
-                                                     class="hidden h-6 w-5 flex-none text-gray-400 sm:block"
-                                                >
-                                                    <path stroke="none"
-                                                          d="M0 0h24v24H0z"
-                                                          fill="none"
-                                                    />
-                                                    <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
-                                                </svg>
-                                                <div class="flex-auto">
-                                                    <div class="flex items-start gap-x-3">
-                                                        <div class="text-sm font-medium leading-6 text-gray-900">
-                                                            { cert.data.title }
-                                                        </div>
-                                                        <div class="rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium
-                                                            text-indigo-700 ring-1 ring-inset ring-indigo-600/20"
-                                                        >
-                                                            { cert.data.acronym }
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-1 text-xs leading-5 text-gray-500">
-                                                        { title(cert.slug.split("/")[0]) }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <ColCertificationPath cert={ cert } />
-                                        <td class="py-5 px-6 text-right">
-                                            <div class="flex justify-end">
-                                                <a href={ `/database/${ cert.slug }` }
-                                                   class="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500 flex items-center"
-                                                >
-                                                    Expand
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                         width="14"
-                                                         height="14"
-                                                         viewBox="0 0 24 24"
-                                                         fill="none"
-                                                         stroke="currentColor"
-                                                         stroke-width="2"
-                                                         stroke-linecap="round"
-                                                         stroke-linejoin="round"
-                                                         class="animate-bounce-horizontal ml-2"
-                                                         aria-hidden="true"
-                                                    >
-                                                        <path stroke="none"
-                                                              d="M0 0h24v24H0z"
-                                                              fill="none"
-                                                        />
-                                                        <path d="M9 6l6 6l-6 6" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="mt-1 text-xs leading-5 text-gray-500tabular-nums text-right">
-                                                Price
-                                                <span class="text-gray-900 font-mono">
-                                                    { Number.isNaN(+cert.data.price)
-                                                      ? cert.data.price.padStart(8, " ")
-                                                          .replace(/\s/g, "\u00A0")
-                                                      : (+cert.data.price).toFixed(2)
-                                                          .padStart(8, " ")
-                                                          .replace(/\s/g, "\u00A0") }
-                                                    { cert.data.currency || "\u00A0" }
-                                                </span>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr class:list={ [
+                                            { "border-b": i !== arr.length },
+                                        ] }
+                                        >
+                                            <td class="relative py-5 px-6">
+                                                {/*This is kept de-hydrated as no interactivity is needed (aka no React)*/ }
+                                                <ColCertification {...omit(cert.data, ["image"])}
+                                                                  provider={ title(cert.slug.split("/")[0]) }
+                                                                  slug={ cert.slug }
+                                                                  image={ cert.data.image.src }
+                                                />
+                                            </td>
+                                            <td class="hidden py-5 px-6 sm:table-cell">
+                                                {/*This is kept de-hydrated as no interactivity is needed (aka no React)*/ }
+                                                <ColCertificationPath career_paths={ cert.data.career_paths } />
+                                            </td>
+                                            <td class="py-5 px-6 text-right">
+                                                {/*This is kept de-hydrated as no interactivity is needed (aka no React)*/ }
+                                                <ColMoreDetails price={ cert.data.price }
+                                                                currency={ cert.data.currency }
+                                                                slug={ cert.slug }
+                                                />
+                                            </td>
+                                        </tr>
                                 ))
                             }
                         </tbody>

@@ -1,7 +1,7 @@
 ---
-import HeaderSearchBar from "@components/astro/common/header-search-bar.astro";
 import Layout from "src/layouts/Layout.astro";
 import { ReactiveDatatable } from "src/components/astro/database/reactive-datatable";
+import RowLoadingState from "@components/astro/database/records-table/row-loading-state.astro";
 ---
 
 <Layout title="CyberPath | Database">
@@ -28,10 +28,9 @@ import { ReactiveDatatable } from "src/components/astro/database/reactive-datata
                     contributors
                 </a> page.
             </p>
-            <div class="grid grid-cols-2 mb-2 mt-4">
-                <HeaderSearchBar />
-            </div>
-            <ReactiveDatatable client:load />
+            <ReactiveDatatable client:load>
+                <RowLoadingState slot="loading" />
+            </ReactiveDatatable>
         </div>
         <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
              aria-hidden="true"
