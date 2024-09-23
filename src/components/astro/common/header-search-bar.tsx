@@ -1,18 +1,26 @@
-import type { FC } from "react";
+import type {
+    FC,
+    FormEventHandler,
+} from "react";
 
 interface HeaderSearchBarProps {
-    value?: string;
-    onInput?: (event: InputEvent) => void;
+    value?: string | null;
+    onInput?: FormEventHandler<HTMLInputElement>;
+    /**
+     * The base URL for the API without the trailing slash, defaults to `/database`
+     */
+    base_url?: string;
 }
 
 export const HeaderSearchBar: FC<HeaderSearchBarProps> = ({
     value,
     onInput,
+    base_url = "/database",
 }) => {
     return (
         <form className="relative rounded-full shadow-sm"
               method="get"
-              action="/database"
+              action={ base_url }
         >
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-500 w-8 h-8">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +48,7 @@ export const HeaderSearchBar: FC<HeaderSearchBarProps> = ({
                     placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6
                     min-w-64"
                    placeholder="Search for certification"
-                   value={ value }
+                   value={ value ?? undefined }
                    onInput={ onInput }
             />
         </form>

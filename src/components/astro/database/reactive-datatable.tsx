@@ -37,10 +37,15 @@ import type {
 
 interface ReactiveDatatableProps {
     loading: ReactNode;
+    /**
+     * The base URL for the API without the trailing slash, defaults to `/database`
+     */
+    base_url?: string;
 }
 
 export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
     loading,
+    base_url = "/database",
 }) => {
     const [ is_loading, set_loading ] = useState(true);
     const [ error, set_error ] = useState<string | null>(null);
@@ -49,12 +54,83 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
     const [ all_data, set_all_data ] = useState<Fuse<CertificationMetadata>>(
         new Fuse([]),
     );
-    const [ query, set_query ] = useState<string>("");
+    const [ query, set_query ] = useState<string | null>(null);
     const [ pagination, set_pagination ] = useState({
         page:        1,
         total_pages: 1,
         per_page:    10,
     });
+    const [ url_search_params, set_url_search_params ] = useState<URLSearchParams>();
+    const pagination_url = useMemo(() => {
+        if (!url_search_params) {
+            return {
+                previous:           null,
+                previous_long_step: "#",
+                first:              "#",
+                second:             "#",
+                next:               null,
+                next_long_step:     "#",
+                last:               "#",
+                last_but_one:       "#",
+            };
+        }
+
+        return {
+            previous:           (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", `${ pagination.page - 1 }`);
+
+                return pagination.page > 1 ? `${ base_url }/?${ tmp.toString() }` : null;
+            })(),
+            previous_long_step: (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", `${ pagination.page - 2 }`);
+
+                return pagination.page > 2 ? `${ base_url }/?${ tmp.toString() }` : "#";
+            })(),
+            first:              (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", "1");
+
+                return `${ base_url }/?${ tmp.toString() }`;
+            })(),
+            second:             (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", "2");
+
+                return `${ base_url }/?${ tmp.toString() }`;
+            })(),
+            next:               (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", `${ pagination.page + 1 }`);
+
+                return pagination.page < pagination.total_pages ? `${ base_url }/?${ tmp.toString() }` : null;
+            })(),
+            next_long_step:     (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", `${ pagination.page + 2 }`);
+
+                return pagination.page < pagination.total_pages - 1 ? `${ base_url }/?${ tmp.toString() }` : "#";
+            })(),
+            last:               (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", `${ pagination.total_pages }`);
+
+                return `${ base_url }/?${ tmp.toString() }`;
+            })(),
+            last_but_one:       (() => {
+                const tmp = new URLSearchParams(url_search_params);
+                tmp.set("page", `${ pagination.total_pages - 1 }`);
+
+                return `${ base_url }/?${ tmp.toString() }`;
+            })(),
+        };
+    }, [
+        url_search_params,
+        pagination.page,
+        base_url,
+        pagination.total_pages,
+    ]);
     const display_data = useMemo(
         () => {
             if (query) {
@@ -71,6 +147,7 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
             all_data,
             query,
             all_raw_data,
+            pagination.per_page,
         ],
     );
 
@@ -78,9 +155,11 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
         set_loading(true);
 
         // load data from the URL
-        const url = new URL(window.location.href);
+        const search_params = new URLSearchParams(window.location.search);
+        set_url_search_params(search_params);
+
         // Get the page number from the URL
-        const page = url.searchParams.get("page");
+        const page = search_params.get("page");
         if (page && !Number.isNaN(+page)) {
             set_pagination((prev) => ({
                 ...prev,
@@ -88,15 +167,15 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
             }));
         }
 
-        const query = url.searchParams.get("query");
+        const query = search_params.get("query");
         if (query) {
             set_query(query);
         }
 
         // Fetch data from the server
         all({
-            data:  fetch("/database/data.json"),
-            index: fetch("/database/data-index.json"),
+            data:  fetch(`${ base_url }/data.json`),
+            index: fetch(`${ base_url }/data-index.json`),
         }).then(async ({
                 data,
                 index,
@@ -117,6 +196,18 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                 // If the page number is greater than the total number of pages
                 // then set the page number to 1
                 if (page && +page > total_pages) {
+                    set_url_search_params((prev) => {
+                        let tmp;
+                        if (!prev) {
+                            tmp = new URLSearchParams(window.location.search);
+                        }
+                        else {
+                            tmp = new URLSearchParams(prev);
+                        }
+
+                        tmp.set("page", "1");
+                        return tmp;
+                    });
                     set_pagination((prev) => ({
                         ...prev,
                         page: 1,
@@ -155,7 +246,8 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
         <>
             <div className="grid grid-cols-2 mb-2 mt-4">
                 <HeaderSearchBar value={ query }
-                                 onInput={ (ev) => set_query(ev.data || "") }
+                                 onInput={ (ev) => set_query((ev as unknown as InputEvent).data) }
+                                 base_url={ base_url }
                 />
             </div>
             <Table>
@@ -232,19 +324,17 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                 </tfoot>
             </Table>
             <Pagination className="mt-6 justify-end">
-                { pagination.page > 1 ? (
-                    <PaginationPrevious href={ `/database/?page=${ pagination.page - 1 }` } />
-                ) : (
-                      <PaginationPrevious href={ null } />
-                  ) }
+                <PaginationPrevious href={ pagination_url.previous } />
                 <PaginationList>
                     { Array.from({ length: pagination.page - 1 }).length > 2 ? (
                         <>
-                            <PaginationPage href={ `/database/?page=1` }>1</PaginationPage>
-                            <PaginationPage href={ `/database/?page=2` }>2</PaginationPage>
-                            <PaginationGap />
+                            <PaginationPage href={ pagination_url.first }>1</PaginationPage>
+                            <PaginationPage href={ pagination_url.second }>2</PaginationPage>
+                            { pagination.page - 2 !== 2 && (
+                                <PaginationGap />
+                            ) }
                             { pagination.page > 1 && (
-                                <PaginationPage href={ `/database/?page=${ pagination.page - 1 }` }>
+                                <PaginationPage href={ pagination_url.previous || "#" }>
                                     { pagination.page - 1 }
                                 </PaginationPage>
                             ) }
@@ -252,12 +342,12 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                     ) : (
                           <>
                               { pagination.page > 2 && (
-                                  <PaginationPage href={ `/database/?page=${ pagination.page - 2 }` }>
+                                  <PaginationPage href={ pagination_url.previous_long_step }>
                                       { pagination.page - 2 }
                                   </PaginationPage>
                               ) }
                               { pagination.page > 1 && (
-                                  <PaginationPage href={ `/database/?page=${ pagination.page - 1 }` }>
+                                  <PaginationPage href={ pagination_url.previous || "#" }>
                                       { pagination.page - 1 }
                                   </PaginationPage>
                               ) }
@@ -270,21 +360,23 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                     </PaginationPage>
                     { Array.from({
                         length: pagination.total_pages - (pagination.page - 1),
-                    }).length > 2 ? (
+                    }).length > 3 ? (
                           <>
                               { pagination.page < pagination.total_pages - 1 && (
-                                  <PaginationPage href={ `/database/?page=${ pagination.page + 1 }` }>
+                                  <PaginationPage href={ pagination_url.next || "#" }>
                                       { pagination.page + 1 }
                                   </PaginationPage>
                               ) }
-                              <PaginationGap />
+                              { pagination.page + 2 !== pagination.total_pages - 1 && (
+                                  <PaginationGap />
+                              ) }
+                              { pagination.page + 1 !== pagination.total_pages - 1 && (
+                                  <PaginationPage href={ pagination_url.last_but_one }>
+                                      { pagination.total_pages - 1 }
+                                  </PaginationPage>
+                              ) }
                               <PaginationPage
-                                  href={ `/database/?page=${ pagination.total_pages - 1 }` }
-                              >
-                                  { pagination.total_pages - 1 }
-                              </PaginationPage>
-                              <PaginationPage
-                                  href={ `/database/?page=${ pagination.total_pages }` }
+                                  href={ pagination_url.last }
                               >
                                   { pagination.total_pages }
                               </PaginationPage>
@@ -292,23 +384,19 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                       ) : (
                           <>
                               { pagination.page < pagination.total_pages && (
-                                  <PaginationPage href={ `/database/?page=${ pagination.page + 1 }` }>
+                                  <PaginationPage href={ pagination_url.next || "#" }>
                                       { pagination.page + 1 }
                                   </PaginationPage>
                               ) }
                               { pagination.page < pagination.total_pages - 1 && (
-                                  <PaginationPage href={ `/database/?page=${ pagination.page + 2 }` }>
+                                  <PaginationPage href={ pagination_url.next_long_step }>
                                       { pagination.page + 2 }
                                   </PaginationPage>
                               ) }
                           </>
                       ) }
                 </PaginationList>
-                { pagination.page < pagination.total_pages ? (
-                    <PaginationNext href={ `/database/?page=${ pagination.page + 1 }` } />
-                ) : (
-                      <PaginationNext href={ null } />
-                  ) }
+                <PaginationNext href={ pagination_url.next } />
             </Pagination>
         </>
     );
