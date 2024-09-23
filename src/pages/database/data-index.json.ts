@@ -1,13 +1,8 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
-import Fuse from "fuse.js";
+import Fuse, { type IFuseOptions } from "fuse.js";
 import {
-    omit,
-    title,
-} from "radash";
-import type {
-    CertificationMetadata,
-    CertificationMetadataCollection,
+    type CertificationMetadata,
+    getCertificationMetadata,
 } from "./data.json";
 
 export const FuseConfig: IFuseOptions<CertificationMetadata> = {
@@ -35,31 +30,16 @@ export const FuseConfig: IFuseOptions<CertificationMetadata> = {
     ],
     isCaseSensitive:   false,
     useExtendedSearch: true,
-}
+};
 
 /**
  * Dynamically generate a json with all the metadata from the certifications
  * @param param0 Astro API route
  */
 export const GET: APIRoute = async () => {
-    const certifications = await getCollection(
-        "certifications",
-        (entry) => !entry.data.draft,
-    );
-
-    const metadata: CertificationMetadataCollection = certifications.map(
-        (certification) =>
-            ({
-                ...omit(certification.data, [ "draft" ]),
-                image:    certification.data.image.src,
-                provider: title(certification.slug.split("/")[0]),
-                slug:     certification.slug,
-            }) as CertificationMetadata,
-    );
-
     const index = Fuse.createIndex(
-        FuseConfig.keys,
-        metadata,
+        FuseConfig.keys!,
+        await getCertificationMetadata(),
     );
 
     return Response.json(index.toJSON());
