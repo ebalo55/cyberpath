@@ -22,23 +22,29 @@ export interface CertificationMetadata {
 export type CertificationMetadataCollection = CertificationMetadata[];
 
 /**
+ * Get all the certifications metadata
+ * @returns {Promise<CertificationMetadataCollection>}
+ */
+export async function getCertificationMetadata(): Promise<CertificationMetadataCollection> {
+    const certifications = await getCollection(
+        "certifications",
+        (entry) => !entry.data.draft,
+    );
+
+    return certifications.map(
+        (certification) =>
+            ({
+                ...omit(certification.data, [ "draft" ]),
+                image:    certification.data.image.src,
+                provider: title(certification.slug.split("/")[0]),
+                slug:     certification.slug,
+            }) as CertificationMetadata,
+    ) as CertificationMetadataCollection;
+}
+
+/**
  * Dynamically generate a json with all the metadata from the certifications
  */
 export const GET: APIRoute = async () => {
-  const certifications = await getCollection(
-    "certifications",
-    (entry) => !entry.data.draft,
-  );
-
-  const metadata: CertificationMetadataCollection = certifications.map(
-    (certification) =>
-      ({
-        ...omit(certification.data, ["draft"]),
-        image: certification.data.image.src,
-        provider: title(certification.slug.split("/")[0]),
-        slug: certification.slug,
-      }) as CertificationMetadata,
-  );
-
-  return Response.json(metadata);
+    return Response.json(await getCertificationMetadata());
 };
