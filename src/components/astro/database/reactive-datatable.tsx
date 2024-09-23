@@ -155,7 +155,7 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
         <>
             <div className="grid grid-cols-2 mb-2 mt-4">
                 <HeaderSearchBar value={ query }
-                                 onInput={ (ev) => set_query(ev.data) }
+                                 onInput={ (ev) => set_query(ev.data || "") }
                 />
             </div>
             <Table>
