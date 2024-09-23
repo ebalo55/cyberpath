@@ -2,9 +2,10 @@ import type { APIRoute } from "astro";
 import Fuse from "fuse.js";
 import { FuseConfig } from "src/pages/database/data-index.json";
 import { getCertificationMetadata } from "src/pages/database/data.json";
-import { makeCareerPathLookupTable } from "./data.json.ts";
-
-export { getStaticPaths } from "./data.json.ts";
+import {
+    getStaticPaths,
+    makeCareerPathLookupTable,
+} from "./data.json.ts";
 
 /**
  * Dynamically generate a json with all the metadata from the certifications
@@ -22,3 +23,5 @@ export const GET: APIRoute = async ({ params }) => {
 
     return Response.json(index.toJSON());
 };
+
+export { getStaticPaths };
