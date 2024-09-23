@@ -1,6 +1,9 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { omit, title } from "radash";
+import {
+    omit,
+    title,
+} from "radash";
 
 export interface CertificationMetadata {
   image: string;
@@ -20,7 +23,6 @@ export type CertificationMetadataCollection = CertificationMetadata[];
 
 /**
  * Dynamically generate a json with all the metadata from the certifications
- * @param param0 Astro API route
  */
 export const GET: APIRoute = async () => {
   const certifications = await getCollection(

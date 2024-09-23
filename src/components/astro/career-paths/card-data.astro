@@ -18,13 +18,13 @@ const { career_path } = Astro.props;
 <CardOverlay />
 <div class="flex items-end p-6 sm:absolute sm:inset-0">
     <div>
-        <h3 class="font-semibold text-white text-xl">
+        <h3 class="font-semibold text-white text-3xl">
             <a href="#">
                 { career_path }
             </a>
         </h3>
         <p aria-hidden="true"
-           class="mt-1 text-sm text-white"
+           class="mt-1 text-base text-white"
         >
             { CareerPathsData[career_path].description }
         </p>
