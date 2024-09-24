@@ -3,17 +3,11 @@ import {
     dash,
     zip,
 } from "radash";
-import type React from "react";
 import RowLoadingState from "src/components/astro/database/records-table/row-loading-state.astro";
-import {
-    TableCell,
-    TableRow,
-} from "src/components/react/table";
 import Layout from "src/layouts/Layout.astro";
 import { CAREER_PATH_SPECIAL_HIDDEN } from "src/lib/career-paths";
 import { CareerPathsList } from "src/lib/career-paths";
 import type { CareerPathCollection } from "src/lib/career-paths";
-import { getCertificationMetadata } from "src/pages/database/data.json";
 import { ReactiveDatatable } from "@components/astro/database/reactive-datatable";
 
 /**
@@ -57,8 +51,10 @@ const {
             ></div>
         </div>
         <div class="overflow-x-auto max-w-6xl mx-auto bg-white/50 rounded-xl border p-8">
+            { /* Make Astro linter happy by defining the loading attribute and overriding it via the slot */ }
             <ReactiveDatatable client:load
                                base_url={ `/career-paths/${ path }` }
+                               loading={ null }
             >
                 <RowLoadingState slot="loading" />
             </ReactiveDatatable>

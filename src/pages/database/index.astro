@@ -48,7 +48,10 @@ import RowLoadingState from "@components/astro/database/records-table/row-loadin
                     contributors
                 </a> page.
             </p>
-            <ReactiveDatatable client:load>
+            { /* Make Astro linter happy by defining the loading attribute and overriding it via the slot */ }
+            <ReactiveDatatable client:load
+                               loading={ null }
+            >
                 <RowLoadingState slot="loading" />
             </ReactiveDatatable>
         </div>
