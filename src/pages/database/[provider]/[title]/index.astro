@@ -5,6 +5,8 @@ import { getCollection } from "astro:content";
 import CertBanner from "@components/astro/database/cert-banner.astro";
 import LeftPane from "@components/astro/database/left-pane.astro";
 import RightPane from "@components/astro/database/right-pane.astro";
+import type { WebPage } from "schema-dts";
+import { makeJsonLd } from "src/lib/make-json-ld";
 
 /**
  * Get the paths for the static site generation.
@@ -24,18 +26,58 @@ export async function getStaticPaths() {
             },
             props:  {
                 certification,
+                provider,
             },
         };
     });
 }
 
-const { certification } = Astro.props;
+const {
+          certification,
+          provider,
+      } = Astro.props;
 const {
           Content,
       } = await certification.render();
+
+const date = new Date();
+const json_ld = makeJsonLd<WebPage>({
+    "@type":          "WebPage",
+    "@context":       "https://schema.org",
+    "@id":            `https://cyberpath-hq.com/database/${ certification.slug }`,
+    url:              `https://cyberpath-hq.com/database/${ certification.slug }`,
+    name:             `CyberPath | ${ certification.data.title }`,
+    description:      `Learn more about the ${ certification.data.title } certification, including career paths, costs, and more.`,
+    inLanguage:       "en-US",
+    author:           "Emanuele (ebalo) Balsamo <emanuele.balsamo@cyberpath-hq.com>",
+    image:            {
+        "@type":     "ImageObject",
+        url:         "https://cyberpath-hq.com/CyberPath-og.webp",
+        width:       "1920",
+        height:      "933",
+        description: "CyberPath - Explore Cybersecurity Certifications",
+    },
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id":   "https://cyberpath-hq.com/",
+    },
+    datePublished:    `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`,
+    dateModified:     `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`,
+    publisher:        {
+        "@type": "Person",
+        name:    "Emanuele (ebalo) Balsamo",
+        email:   "emanuele.balsamo@cyberpath-hq.com",
+    },
+    potentialAction:  {
+        "@type": "SearchAction",
+        target:  "https://cyberpath-hq.com/database/?query={search_term_string}",
+    },
+});
 ---
 
-<Layout title={ `CyberPath | ${ certification.data.title }` }>
+<Layout title={ `CyberPath | ${ certification.data.title }` }
+        JSON_LD={ json_ld }
+>
     <AstroSeo
             title={ `CyberPath | ${ certification.data.title }` }
             canonical={ `https://cyberpath-hq.com/database/${ certification.slug }` }
@@ -54,6 +96,12 @@ const {
                     },
                 ],
             } }
+            additionalMetaTags={ [
+                {
+                    name:    "keywords",
+                    content: `cybersecurity, certifications, career, paths, costs, info, cybersecurity career, ${ certification.data.title }, ${ certification.data.acronym }, ${ provider }`,
+                },
+            ] }
     />
     <div class="pb-24 grid grid-cols-12 relative isolate">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

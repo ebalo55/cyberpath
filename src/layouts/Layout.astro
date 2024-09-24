@@ -6,9 +6,13 @@ import Footer from "src/components/astro/common/footer.astro";
 
 interface Props {
     title: string;
+    JSON_LD: string;
 }
 
-const {title} = Astro.props;
+const {
+          title,
+          JSON_LD,
+      } = Astro.props;
 ---
 
 <!doctype html>
@@ -31,6 +35,9 @@ const {title} = Astro.props;
             f.parentNode.insertBefore(j, f);
         })(window, document, "script", "dataLayer", "GTM-MZ2LDS5P");
     </script>
+    <script is:inline
+            type="application/ld+json"
+    >{ JSON_LD }</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8"/>
     <meta name="viewport"

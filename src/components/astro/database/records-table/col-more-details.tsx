@@ -10,6 +10,7 @@ export const ColMoreDetails: FC<Pick<CertificationMetadata, "slug" | "price" | "
                 <a
                     href={ `/database/${ certification.slug }` }
                     className="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500 flex items-center"
+                    title={ `More details about this certification` }
                 >
                     Expand
                     <ChevronRight className="animate-bounce-horizontal ml-2" />
