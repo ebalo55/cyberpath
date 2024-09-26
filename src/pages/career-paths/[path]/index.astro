@@ -6,7 +6,10 @@ import {
 } from "radash";
 import RowLoadingState from "src/components/astro/database/records-table/row-loading-state.astro";
 import Layout from "src/layouts/Layout.astro";
-import { CAREER_PATH_SPECIAL_HIDDEN } from "src/lib/career-paths";
+import {
+    CAREER_PATH_SPECIAL_HIDDEN,
+    CareerPathsData,
+} from "src/lib/career-paths";
 import { CareerPathsList } from "src/lib/career-paths";
 import type { CareerPathCollection } from "src/lib/career-paths";
 import { ReactiveDatatable } from "@components/astro/database/reactive-datatable";
@@ -115,6 +118,17 @@ const json_ld = makeJsonLd<WebPage>({
             ></div>
         </div>
         <div class="overflow-x-auto max-w-6xl mx-auto bg-white/50 rounded-xl border p-8">
+            <h1 class="text-3xl font-bold text-zinc-900">
+                { career_path } path
+            </h1>
+            <div class="my-6">
+                <h2 class="font-semibold leading-none tracking-tight text-lg">
+                    What does { career_path } do?
+                </h2>
+                <p class="text-sm my-1 text-zinc-700">
+                    { CareerPathsData[career_path].description }
+                </p>
+            </div>
             { /* Make Astro linter happy by defining the loading attribute and overriding it via the slot */ }
             <ReactiveDatatable client:load
                                base_url={ `/career-paths/${ path }` }

@@ -102,6 +102,7 @@ const json_ld = makeJsonLd<WebPage>({
                 cluster(career_paths, 3).map((paths, i) => (
                         <CardGroup career_paths={ paths }
                                    inverted={ i % 2 === 1 }
+                                   loading={ i === 0 ? "eager" : "lazy" }
                         />
                 ))
             }

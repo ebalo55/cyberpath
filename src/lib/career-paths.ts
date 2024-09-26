@@ -50,17 +50,17 @@ export const CareerPathsData: {
     [CareerPathsList[1]]:         {
         description: "Defends an organization’s networks and systems against cyberattacks. They specialize in incident response, digital forensics, and continuous monitoring of systems for vulnerabilities. Blue Team Specialists play a hands-on role in threat detection and mitigation, ensuring infrastructure resilience and security across the organization.",
         image:       BlueTeamSpecialist,
-        attribution: `<a href="https://leonardo.ai/" target="_blank" rel="noopener nofollow">Generated with Leonardo AI</a>`,
+        attribution: `<a href="https://leonardo.ai/" target="_blank" rel="noopener nofollow">Image generated with Leonardo AI</a>`,
     },
     [CareerPathsList[2]]:         {
         description: "Responsible for designing and implementing security measures to protect cloud-based infrastructure and data. Ensures the security of cloud environments, focusing on preventing data breaches, managing access, and maintaining regulatory compliance.",
         image:       CloudSecuritySpecialist,
-        attribution: `<a href="https://leonardo.ai/" target="_blank" rel="noopener nofollow">Generated with Leonardo AI</a>`,
+        attribution: `<a href="https://leonardo.ai/" target="_blank" rel="noopener nofollow">Image generated with Leonardo AI</a>`,
     },
     [CareerPathsList[3]]:         {
         description: "Leads and manages cybersecurity teams and strategies, overseeing the implementation of security policies, projects, and incident response. Ensures alignment with organizational objectives while mitigating cyber risks and maintaining regulatory compliance.",
         image:       CybersecurityManager,
-        attribution: `<a href="https://leonardo.ai/" target="_blank" rel="noopener nofollow">Generated with Leonardo AI</a>`,
+        attribution: `<a href="https://leonardo.ai/" target="_blank" rel="noopener nofollow">Image generated with Leonardo AI</a>`,
     },
     [CareerPathsList[4]]:         {
         description: "Develops and tests exploits to identify vulnerabilities in systems, software, or hardware. Often works in offensive security, creating tools that simulate real-world attacks to improve defensive measures or demonstrate security flaws.",

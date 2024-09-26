@@ -11,11 +11,13 @@ import { z } from "astro/zod";
 interface Props {
     career_paths: CareerPathCollection,
     inverted?: boolean,
+    loading?: "eager" | "lazy",
 }
 
 const {
           career_paths: _career_paths,
           inverted = false,
+          loading,
       } = Astro.props;
 
 const career_paths = z.array(z.enum(CareerPathsList))
@@ -31,7 +33,9 @@ const career_paths = z.array(z.enum(CareerPathsList))
                     sm:row-span-2 cursor-pointer"
                      data-href={ `/career-paths/${ dash(career_paths[0]) }` }
                 >
-                    <CardData career_path={ career_paths[0] } />
+                    <CardData career_path={ career_paths[0] }
+                              loading={ loading }
+                    />
                 </div>
                 <div class:list={ [
                     "group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:relative sm:h-full cursor-pointer",
@@ -39,7 +43,9 @@ const career_paths = z.array(z.enum(CareerPathsList))
                 ] }
                      data-href={ `/career-paths/${ dash(career_paths[1]) }` }
                 >
-                    <CardData career_path={ career_paths[1] } />
+                    <CardData career_path={ career_paths[1] }
+                              loading={ loading }
+                    />
                 </div>
                 <div class:list={ [
                     "group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:relative sm:h-full cursor-pointer",
@@ -47,7 +53,9 @@ const career_paths = z.array(z.enum(CareerPathsList))
                 ] }
                      data-href={ `/career-paths/${ dash(career_paths[2]) }` }
                 >
-                    <CardData career_path={ career_paths[2] } />
+                    <CardData career_path={ career_paths[2] }
+                              loading={ loading }
+                    />
                 </div>
         )
         : (
@@ -55,7 +63,9 @@ const career_paths = z.array(z.enum(CareerPathsList))
                     row-start-1 cursor-pointer"
                      data-href={ `/career-paths/${ dash(career_paths[0]) }` }
                 >
-                    <CardData career_path={ career_paths[0] } />
+                    <CardData career_path={ career_paths[0] }
+                              loading={ loading }
+                    />
                 </div>
                 <div class:list={ [
                     `group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:relative sm:h-full col-start-1 
@@ -64,7 +74,9 @@ const career_paths = z.array(z.enum(CareerPathsList))
                 ] }
                      data-href={ `/career-paths/${ dash(career_paths[1]) }` }
                 >
-                    <CardData career_path={ career_paths[1] } />
+                    <CardData career_path={ career_paths[1] }
+                              loading={ loading }
+                    />
                 </div>
                 <div class:list={ [
                     `group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 
@@ -73,7 +85,9 @@ const career_paths = z.array(z.enum(CareerPathsList))
                 ] }
                      data-href={ `/career-paths/${ dash(career_paths[2]) }` }
                 >
-                    <CardData career_path={ career_paths[2] } />
+                    <CardData career_path={ career_paths[2] }
+                              loading={ loading }
+                    />
                 </div>
         )
     }
