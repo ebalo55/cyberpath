@@ -29,7 +29,7 @@ const career_paths = z.array(z.enum(CareerPathsList))
     {
         !inverted
         ? (
-                <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1
+                <div class="group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1
                     sm:row-span-2 cursor-pointer"
                      data-href={ `/career-paths/${ dash(career_paths[0]) }` }
                 >
@@ -38,7 +38,7 @@ const career_paths = z.array(z.enum(CareerPathsList))
                     />
                 </div>
                 <div class:list={ [
-                    "group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:relative sm:h-full cursor-pointer",
+                    "group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:relative sm:h-full cursor-pointer",
                     career_paths[1] === CAREER_PATH_SPECIAL_HIDDEN && "hidden",
                 ] }
                      data-href={ `/career-paths/${ dash(career_paths[1]) }` }
@@ -48,7 +48,7 @@ const career_paths = z.array(z.enum(CareerPathsList))
                     />
                 </div>
                 <div class:list={ [
-                    "group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:relative sm:h-full cursor-pointer",
+                    "group aspect-h-2 aspect-w-3 sm:aspect-h-2 sm:aspect-w-3 overflow-hidden rounded-lg sm:relative sm:h-full cursor-pointer",
                     career_paths[2] === CAREER_PATH_SPECIAL_HIDDEN && "hidden",
                 ] }
                      data-href={ `/career-paths/${ dash(career_paths[2]) }` }
@@ -59,7 +59,7 @@ const career_paths = z.array(z.enum(CareerPathsList))
                 </div>
         )
         : (
-                <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:relative sm:h-full col-start-1
+                <div class="group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:relative sm:h-full col-start-1
                     row-start-1 cursor-pointer"
                      data-href={ `/career-paths/${ dash(career_paths[0]) }` }
                 >
@@ -79,7 +79,7 @@ const career_paths = z.array(z.enum(CareerPathsList))
                     />
                 </div>
                 <div class:list={ [
-                    `group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 
+                    `group aspect-h-2 aspect-w-3 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 
                     cursor-pointer`,
                     career_paths[2] === CAREER_PATH_SPECIAL_HIDDEN && "hidden",
                 ] }

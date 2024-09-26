@@ -24,6 +24,7 @@ import { Image } from "astro:assets";
         <div class="flex lg:hidden">
             <button type="button"
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                    id="mobile-menu-open"
             >
                 <span class="sr-only">Open main menu</span>
                 <svg class="h-6 w-6"
@@ -63,9 +64,10 @@ import { Image } from "astro:assets";
         </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
-    <div class="lg:hidden"
+    <div class="hidden"
          role="dialog"
          aria-modal="true"
+         id="mobile-menu"
     >
         <!-- Background backdrop, show/hide based on slide-over state. -->
         <div class="fixed inset-0 z-10"></div>
@@ -86,6 +88,7 @@ import { Image } from "astro:assets";
                 </a>
                 <button type="button"
                         class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        id="mobile-menu-close"
                 >
                     <span class="sr-only">Close menu</span>
                     <svg class="h-6 w-6"
@@ -132,3 +135,38 @@ import { Image } from "astro:assets";
         </div>
     </div>
 </header>
+<script>
+    if (!window.mobile) {
+        window.mobile = {
+            is_menu_open: false,
+        };
+    }
+
+    // Get the mobile menu instance
+    const mobile_menu = document.getElementById("mobile-menu");
+    if (!mobile_menu) {
+        throw new Error("Mobile menu not found");
+    }
+
+    // Attach event listener to close mobile menu
+    const mobile_menu_close = document.getElementById("mobile-menu-close");
+    if (!mobile_menu_close) {
+        throw new Error("Mobile menu close button not found");
+    }
+    mobile_menu_close.addEventListener("click", () => {
+        window.mobile!.is_menu_open = false;
+        mobile_menu.setAttribute("aria-hidden", "true");
+        mobile_menu.className = "hidden";
+    });
+
+    // Attach event listener to open mobile menu
+    const mobile_menu_open = document.getElementById("mobile-menu-open");
+    if (!mobile_menu_open) {
+        throw new Error("Mobile menu open button not found");
+    }
+    mobile_menu_open.addEventListener("click", () => {
+        window.mobile!.is_menu_open = true;
+        mobile_menu.setAttribute("aria-hidden", "false");
+        mobile_menu.className = "block";
+    });
+</script>

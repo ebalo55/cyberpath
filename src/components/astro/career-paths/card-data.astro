@@ -26,20 +26,20 @@ const certification_count = (await getCollection("certifications", (entry) => {
        loading={ loading }
 />
 <CardOverlay />
-<div class="flex items-end p-6 sm:absolute sm:inset-0">
+<div class="flex items-end p-3 sm:p-6 sm:absolute sm:inset-0">
     <div>
         <h4 class="text-base font-semibold leading-7 text-indigo-400">
             { certification_count } Certifications
         </h4>
-        <h3 class="font-semibold text-white text-4xl">
+        <h3 class="font-semibold text-white text-xl sm:text-3xl lg:text-4xl">
             { career_path }
         </h3>
         <p aria-hidden="true"
-           class="mt-1 text-base text-zinc-300"
+           class="mt-1 text-base text-zinc-300 line-clamp-2 sm:line-clamp-2 lg:line-clamp-4"
         >
             { CareerPathsData[career_path].description }
         </p>
-        <small class="text-xs text-indigo-300 hover:underline"
+        <small class="text-xs text-indigo-300 hover:underline hidden sm:block mt-1"
                set:html={ CareerPathsData[career_path].attribution }
         />
     </div>

@@ -254,8 +254,8 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                 <TableHead>
                     <TableRow>
                         <TableHeader>Certification</TableHeader>
-                        <TableHeader>Certification paths</TableHeader>
-                        <TableHeader className="text-right">More details</TableHeader>
+                        <TableHeader className="hidden sm:table-cell ">Certification paths</TableHeader>
+                        <TableHeader className="hidden sm:table-cell text-right">More details</TableHeader>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -299,13 +299,13 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                             <TableRow
                                 key={ `${ certification.provider }-${ certification.title }` }
                             >
-                                <TableCell className="font-medium relative py-5 px-6">
+                                <TableCell className="font-medium relative py-5 px-6 max-w-full">
                                     <ColCertification { ...certification } />
                                 </TableCell>
                                 <TableCell className="hidden py-5 px-6 sm:table-cell">
                                     <ColCertificationPath { ...certification } />
                                 </TableCell>
-                                <TableCell className="py-5 px-6 text-right">
+                                <TableCell className="hidden sm:table-cell py-5 px-6 text-right">
                                     <ColMoreDetails { ...certification } />
                                 </TableCell>
                             </TableRow>
@@ -314,7 +314,7 @@ export const ReactiveDatatable: FC<ReactiveDatatableProps> = ({
                 <tfoot>
                     <TableRow>
                         <TableCell colSpan={ 3 }>
-                            <p className="ml-auto text-xs text-zinc-700 text-right">
+                            <p className="sm:ml-auto text-xs text-zinc-700 sm:text-right max-w-full">
                                 Showing { (pagination.page - 1) * pagination.per_page } - { " " }
                                 { Math.min(pagination.page * pagination.per_page, display_data.length) } of { " " }
                                 { display_data.length } results
