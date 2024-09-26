@@ -103,7 +103,7 @@ const json_ld = makeJsonLd<WebPage>({
                 },
             ] }
     />
-    <div class="pb-24 grid grid-cols-12 relative isolate">
+    <div class="pb-24 grid grid-cols-1 lg:grid-cols-12 relative isolate">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
              aria-hidden="true"
         >
@@ -115,14 +115,16 @@ const json_ld = makeJsonLd<WebPage>({
                     banner={ certification.data.image }
         />
         <LeftPane certification={ certification } />
-        <article class="w-full max-w-5xl col-start-4 col-span-6 row-start-2 rounded-md p-12 text-base leading-7 text-gray-700">
+        <article class="w-full max-w-full sm:max-w-5xl lg:col-start-2 lg:col-span-10 xl:row-start-2 xl:col-start-4 xl:col-span-6 row-start-3
+            rounded-md sm:p-12 p-4 text-base leading-7 text-gray-700"
+        >
             <h2 class="text-base font-semibold leading-7 text-indigo-600">
                 { certification.data.acronym }
             </h2>
             <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 { certification.data.title }
             </h1>
-            <div class="prose prose-zinc max-w-5xl prose-h1:hidden prose-a:text-indigo-600 prose-a:font-semibold
+            <div class="prose prose-zinc max-w-full sm:max-w-5xl prose-h1:hidden prose-a:text-indigo-600 prose-a:font-semibold
                 hover:prose-a:underline prose-a:no-underline"
             >
                 <Content />

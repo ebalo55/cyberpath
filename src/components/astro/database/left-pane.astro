@@ -9,8 +9,8 @@ const { certification } = Astro.props;
 const provider = title(certification.slug.split("/")[0]);
 ---
 
-<aside class="relative col-span-3 p-8 row-start-2">
-    <div class="border rounded-lg sticky top-16 p-2 py-4">
+<aside class="relative lg:col-span-6 xl:col-span-3 p-2 sm:p-8 lg:m-0 lg:p-0 xl:p-8 row-start-2">
+    <div class="xl:border lg:border-r lg:border-b-0 border-b xl:rounded-lg xl:sticky md:top-16 p-2 py-4">
         <h2 class="text-lg font-semibold text-zinc-900 px-4 py-2">
             Certification details
         </h2>
@@ -45,19 +45,38 @@ const provider = title(certification.slug.split("/")[0]);
                         Price
                     </td>
                     <td class="px-4 py-2">
-                        { (+certification.data.price).toFixed(2) } { certification.data.currency }
+                        {
+                            Number.isNaN(+certification.data.price) ?
+                            certification.data.price :
+                            (+certification.data.price).toFixed(2)
+                        }
+                        { certification.data.currency }
                     </td>
                 </tr>
                 <tr>
-                    <td class="font-semibold text-zinc-900 px-4 py-2 align-text-top">
+                    <td class="font-semibold text-zinc-900 px-4 py-2 align-text-top hidden sm:table-cell">
                         Career paths
                     </td>
-                    <td class="px-4 py-2">
+                    <td class="px-4 py-2 hidden sm:table-cell">
                         <ul class="list-disc list-inside">
                             { certification.data.career_paths.map((path) => (
                                 <li>
                                     { path }
                                 </li>
+                            )) }
+                        </ul>
+                    </td>
+                    <td class="px-4 py-2 table-cell sm:hidden"
+                        colspan="2"
+                    >
+                        <p class="font-semibold text-zinc-900 text-left">
+                            Career paths
+                        </p>
+                        <ul class="list-disc list-inside pl-1">
+                            { certification.data.career_paths.map((path) => (
+                                    <li>
+                                        { path }
+                                    </li>
                             )) }
                         </ul>
                     </td>
