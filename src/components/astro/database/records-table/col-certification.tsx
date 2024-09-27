@@ -1,9 +1,18 @@
 import { ColMoreDetails } from "@components/astro/database/records-table/col-more-details.tsx";
 import { Badge } from "@components/icon/badge.tsx";
-import type { FC } from "react";
+import {
+    type FC,
+    useMemo,
+} from "react";
+import { providerCustomNamesMapping } from "src/lib/provider-custom-names-mapping.ts";
 import type { CertificationMetadata } from "src/pages/database/data.json.ts";
 
 export const ColCertification: FC<CertificationMetadata> = (certification) => {
+    const provider = useMemo(() => {
+        return providerCustomNamesMapping[certification.provider as keyof typeof providerCustomNamesMapping] ||
+               certification.provider;
+    }, [ certification.provider ]);
+
     return (
         <div className="flex gap-x-6">
             <Badge class="hidden h-6 w-5 flex-none text-gray-400 sm:block" />
@@ -19,7 +28,7 @@ export const ColCertification: FC<CertificationMetadata> = (certification) => {
                     </div>
                 </div>
                 <div className="mt-1 text-xs leading-5 text-gray-500">
-                    { certification.provider }
+                    { provider }
                 </div>
                 <div className="block sm:hidden text-left">
                     <ColMoreDetails price={ certification.price }
