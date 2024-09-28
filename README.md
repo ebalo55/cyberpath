@@ -1,54 +1,78 @@
-# Astro Starter Kit: Basics
+# CyberPath
 
-```sh
-npm create astro@latest -- --template basics
+Welcome to **CyberPath**, this project is dedicated to empowering individuals and organizations in their
+cybersecurity journey. Our mission is to provide accessible resources, tools and more to help you navigate the complex
+world of cybersecurity certification and training.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Features
+
+- **Public database**: Access a comprehensive database of cybersecurity certifications, training programs, and
+  resources, search by acronym, provider, title or career path and
+  find the information you need to advance your career.
+- **Community contributions**: Contribute to the platform by adding new certifications, training programs, and
+  resources, to help others in their cybersecurity journey.
+
+## Installation
+
+Although CyberPath is an OpenSource project and you can install it and run it locally, we recommend using the
+[official website](https://cyberpath-hq.com) for the best experience.
+
+The website is updated automatically with every new release, and you can access the latest features and resources
+without the need to install anything.
+Additionally, the website contains all the precompiled metadata of the certifications easily accessible via a simple
+fetch request.
+
+If you still want to run the platform locally, you can follow the instructions below.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ebalo55/cyberpath.git
+   ```
+2. Navigate into the directory:
+   ```bash
+   cd cyberpath
+   ```
+3. Install the necessary dependencies, pnpm is required:
+   ```bash
+   pnpm install
+   ```
+
+## Usage
+
+Once installed, you can start exploring the resources available in CyberPath. The platform is designed to be
+user-friendly, allowing you to easily navigate through it.
+
+If you've chosen to deploy it locally then you'll have to run:
+
+```bash
+pnpm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+And access it at: [localhost:4321](http://localhost:4321)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Contributing
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+We welcome contributions from everyone! If you have ideas for improvements, new features, or simply want to add some
+courses or certifications than you should check our [contribution guidelines](./CONTRIBUTING.md)
 
-## 🚀 Project Structure
+## License
 
-Inside of your Astro project, you'll see the following folders and files:
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Contact
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+For more information, questions, or feedback, please reach out via:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Email: [support@cyberpath-hq.com](mailto:support@cyberpath-hq.com)
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Thank you for visiting CyberPath! We look forward to your contributions and hope you find our resources helpful in your
+cybersecurity endeavors.
