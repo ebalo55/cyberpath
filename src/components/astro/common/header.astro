@@ -91,7 +91,7 @@ import { Image } from "astro:assets";
                         id="mobile-menu-close"
                 >
                     <span class="sr-only">Close menu</span>
-                    <svg class="h-6 w-6"
+                    <svg class="h-6 w-6 pointer-events-none"
                          fill="none"
                          viewBox="0 0 24 24"
                          stroke-width="1.5"
@@ -135,7 +135,7 @@ import { Image } from "astro:assets";
         </div>
     </div>
 </header>
-<script>
+<script is:inline>
     if (!window.mobile) {
         window.mobile = {
             is_menu_open: false,
@@ -154,7 +154,7 @@ import { Image } from "astro:assets";
         throw new Error("Mobile menu close button not found");
     }
     mobile_menu_close.addEventListener("click", () => {
-        window.mobile!.is_menu_open = false;
+        window.mobile.is_menu_open = false;
         mobile_menu.setAttribute("aria-hidden", "true");
         mobile_menu.className = "hidden";
     });
@@ -165,7 +165,7 @@ import { Image } from "astro:assets";
         throw new Error("Mobile menu open button not found");
     }
     mobile_menu_open.addEventListener("click", () => {
-        window.mobile!.is_menu_open = true;
+        window.mobile.is_menu_open = true;
         mobile_menu.setAttribute("aria-hidden", "false");
         mobile_menu.className = "block";
     });
