@@ -42,34 +42,33 @@ const json_ld = makeJsonLd<WebPage>({
 });
 ---
 
-<Layout title="CyberPath | Explore Cybersecurity Certifications"
-        JSON_LD={ json_ld }
->
-    <AstroSeo
-            title="CyberPath | Explore Cybersecurity Certifications"
-            canonical="https://cyberpath-hq.com/"
-            description="Explore CyberPath’s free database of cybersecurity certifications. Find career paths, costs, and detailed info to advance your cybersecurity career."
-            openGraph={ {
-                url:         "https://cyberpath-hq.com/",
+<Layout JSON_LD={ json_ld }
+        seo={ {
+            title:              "CyberPath | Explore Cybersecurity Certifications",
+            canonical:          "https://cyberpath-hq.com/",
+            description:        "Explore CyberPath’s free database of cybersecurity certifications. Find career paths, costs, and detailed info to advance your cybersecurity career.",
+            openGraph:          {
+                url:       "https://cyberpath-hq.com/",
                 title: "CyberPath | Explore Cybersecurity Certifications",
                 description: "Explore CyberPath’s free database of cybersecurity certifications. Find career paths, costs, and detailed info to advance your cybersecurity career.",
-                site_name:   "CyberPath",
-                images:      [
+                site_name: "CyberPath",
+                images:    [
                     {
-                        url:    "https://cyberpath-hq.com/CyberPath-og.webp",
-                        width:  1920,
+                        url:   "https://cyberpath-hq.com/CyberPath-og.webp",
+                        width: 1920,
                         height: 933,
-                        alt:    "CyberPath - Explore Cybersecurity Certifications",
+                        alt:   "CyberPath - Explore Cybersecurity Certifications",
                     },
                 ],
-            } }
-            additionalMetaTags={ [
+            },
+            additionalMetaTags: [
                 {
-                    name:    "keywords",
+                    name: "keywords",
                     content: "cybersecurity, certifications, career, paths, costs, info, cybersecurity career",
                 },
-            ] }
-    />
+            ],
+        } }
+>
     <Hero />
     <Newsletter />
     <Faq />

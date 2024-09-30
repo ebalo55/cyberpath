@@ -41,34 +41,33 @@ const json_ld = makeJsonLd<WebPage>({
 });
 ---
 
-<Layout title="CyberPath | Database"
-        JSON_LD={ json_ld }
->
-    <AstroSeo
-            title="CyberPath | Database"
-            canonical="https://cyberpath-hq.com/database/"
-            description="Access the full database of certifications and exams. Search, filter, and sort the data to find the information you need, remember, it's Free!"
-            openGraph={ {
-                url:         "https://cyberpath-hq.com/database/",
-                title:       "CyberPath | Database",
+<Layout JSON_LD={ json_ld }
+        seo={ {
+            title:              "CyberPath | Database",
+            canonical:          "https://cyberpath-hq.com/database/",
+            description:        "Access the full database of certifications and exams. Search, filter, and sort the data to find the information you need, remember, it's Free!",
+            openGraph:          {
+                url:       "https://cyberpath-hq.com/database/",
+                title:     "CyberPath | Database",
                 description: "Access the full database of certifications and exams. Search, filter, and sort the data to find the information you need, remember, it's Free!",
-                site_name:   "CyberPath",
-                images:      [
+                site_name: "CyberPath",
+                images:    [
                     {
-                        url:    "https://cyberpath-hq.com/CyberPath-og.webp",
-                        width:  1920,
+                        url:   "https://cyberpath-hq.com/CyberPath-og.webp",
+                        width: 1920,
                         height: 933,
-                        alt:    "CyberPath - Explore Cybersecurity Certifications",
+                        alt:   "CyberPath - Explore Cybersecurity Certifications",
                     },
                 ],
-            } }
-            additionalMetaTags={ [
+            },
+            additionalMetaTags: [
                 {
                     name:    "keywords",
                     content: "cybersecurity, certifications, exams, database, search, filter, sort, free",
                 },
-            ] }
-    />
+            ],
+        } }
+>
     <div class="relative isolate py-14">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
              aria-hidden="true"

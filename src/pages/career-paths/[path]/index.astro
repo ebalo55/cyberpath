@@ -81,34 +81,33 @@ const json_ld = makeJsonLd<WebPage>({
 });
 ---
 
-<Layout title={ `CyberPath | ${ career_path }` }
-        JSON_LD={ json_ld }
->
-    <AstroSeo
-            title={ `CyberPath | ${ career_path }` }
-            canonical={ `https://cyberpath-hq.com/career-paths/${ path }` }
-            description={ `Explore the certification that make up the ${ career_path } career path. Find career paths, costs, and detailed info to advance your cybersecurity career.` }
-            openGraph={ {
-                url:         `https://cyberpath-hq.com/career-paths/${ path }`,
-                title:       `CyberPath | ${ career_path }`,
+<Layout JSON_LD={ json_ld }
+        seo={ {
+            title:              `CyberPath | ${ career_path }`,
+            canonical:          `https://cyberpath-hq.com/career-paths/${ path }`,
+            description:        `Explore the certification that make up the ${ career_path } career path. Find career paths, costs, and detailed info to advance your cybersecurity career.`,
+            openGraph:          {
+                url:       `https://cyberpath-hq.com/career-paths/${ path }`,
+                title:     `CyberPath | ${ career_path }`,
                 description: `Explore the certification that make up the ${ career_path } career path. Find career paths, costs, and detailed info to advance your cybersecurity career.`,
-                site_name:   "CyberPath",
-                images:      [
+                site_name: "CyberPath",
+                images:    [
                     {
-                        url:    "https://cyberpath-hq.com/CyberPath-og.webp",
-                        width:  1920,
+                        url:   "https://cyberpath-hq.com/CyberPath-og.webp",
+                        width: 1920,
                         height: 933,
-                        alt:    "CyberPath - Explore Cybersecurity Certifications",
+                        alt:   "CyberPath - Explore Cybersecurity Certifications",
                     },
                 ],
-            } }
-            additionalMetaTags={ [
+            },
+            additionalMetaTags: [
                 {
                     name:    "keywords",
                     content: `cybersecurity, certifications, career, paths, costs, info, cybersecurity career, career path, ${ career_path }`,
                 },
-            ] }
-    />
+            ],
+        } }
+>
     <div class="relative isolate py-14">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
              aria-hidden="true"

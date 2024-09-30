@@ -1,5 +1,4 @@
 ---
-import { AstroSeo } from "@astrolib/seo";
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import CertBanner from "@components/astro/database/cert-banner.astro";
@@ -75,14 +74,12 @@ const json_ld = makeJsonLd<WebPage>({
 });
 ---
 
-<Layout title={ `CyberPath | ${ certification.data.title }` }
-        JSON_LD={ json_ld }
->
-    <AstroSeo
-            title={ `CyberPath | ${ certification.data.title }` }
-            canonical={ `https://cyberpath-hq.com/database/${ certification.slug }` }
-            description={ `Learn more about the ${ certification.data.title } certification, including career paths, costs, and more.` }
-            openGraph={ {
+<Layout JSON_LD={ json_ld }
+        seo={ {
+            title:              `CyberPath | ${ certification.data.title }`,
+            description:        `Learn more about the ${ certification.data.title } certification, including career paths, costs, and more.`,
+            canonical:          `https://cyberpath-hq.com/database/${ certification.slug }`,
+            openGraph:          {
                 url:   `https://cyberpath-hq.com/database/${ certification.slug }`,
                 title: `CyberPath | ${ certification.data.title }`,
                 description: `Learn more about the ${ certification.data.title } certification, including career paths, costs, and more.`,
@@ -95,14 +92,15 @@ const json_ld = makeJsonLd<WebPage>({
                         alt:    "CyberPath - Explore Cybersecurity Certifications",
                     },
                 ],
-            } }
-            additionalMetaTags={ [
+            },
+            additionalMetaTags: [
                 {
                     name:    "keywords",
                     content: `cybersecurity, certifications, career, paths, costs, info, cybersecurity career, ${ certification.data.title }, ${ certification.data.acronym }, ${ provider }`,
                 },
-            ] }
-    />
+            ],
+        } }
+>
     <div class="pb-24 grid grid-cols-1 lg:grid-cols-12 relative isolate">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
              aria-hidden="true"

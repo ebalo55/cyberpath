@@ -3,14 +3,16 @@
 import "@fontsource-variable/nunito";
 import Header from "src/components/astro/common/header.astro";
 import Footer from "src/components/astro/common/footer.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+import { AstroSeo } from "@astrolib/seo";
 
 interface Props {
-    title: string;
     JSON_LD: string;
+    seo: AstroSeoProps;
 }
 
 const {
-          title,
+          seo,
           JSON_LD,
       } = Astro.props;
 ---
@@ -21,12 +23,16 @@ const {
 >
 <head>
     <!-- Google Tag Manager -->
-    <script is:inline async defer>
-        (function (w, d, s, l, i) {
+    <script is:inline
+            async
+            defer
+    >
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 "gtm.start":
-                    new Date().getTime(), event: "gtm.js"
+                       new Date().getTime(),
+                event: "gtm.js",
             });
             var f = d.getElementsByTagName(s)[0],
                 j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
@@ -37,10 +43,10 @@ const {
     </script>
     <script is:inline
             type="application/ld+json"
-            set:html={JSON_LD}
+            set:html={ JSON_LD }
     />
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0"
     />
@@ -51,19 +57,22 @@ const {
     <link rel="sitemap"
           href="/sitemap-index.xml"
     />
-    <title>{title}</title>
+    <AstroSeo {...seo} />
 </head>
 <body class="font-sans bg-white text-zinc-900">
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ2LDS5P"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
-<Header/>
-<main>
-    <slot/>
-</main>
-<Footer/>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ2LDS5P"
+                height="0"
+                width="0"
+                style="display:none;visibility:hidden"
+        ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <Header />
+    <main>
+        <slot />
+    </main>
+    <Footer />
 </body>
 </html>
