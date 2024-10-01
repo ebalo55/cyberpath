@@ -32,7 +32,7 @@ async function startServer() {
         { stdio: "inherit" },
     );
     // Give the server a moment to start
-    await new Promise((resolve) => setTimeout(resolve, 2500)); // Wait for 2.5 second, it's pretty fast
+    await new Promise((resolve) => setTimeout(resolve, 10000)); // Wait for 10 second
 
     console.log("Development server started");
     return devServer;
@@ -75,8 +75,8 @@ async function focusOnTarget(page) {
         window.scrollBy(0, 130);
     });
 
-    // Let React load the data and render them, wait for 2.5 seconds
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    // Let React load the data and render them, wait for 10 seconds
+    await new Promise((resolve) => setTimeout(resolve, 10000));
 }
 
 /**
@@ -139,6 +139,7 @@ async function main() {
     }
     else {
         console.error("Failed to kill development server");
+        process.exit(1);
     }
 }
 
