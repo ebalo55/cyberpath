@@ -1,13 +1,14 @@
 ---
-
+import MadeInEu from '@/assets/made-in-eu.svg';
+import { Image } from 'astro:assets';
 ---
 
 <footer class="bg-white/25 border-t z-50 relative overflow-hidden">
-    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
+    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8 space-y-6">
+        <nav class="columns-2 sm:flex sm:justify-center sm:space-x-12"
              aria-label="Footer"
         >
-            <div class="pb-6">
+            <div class="pb-6 lg:pb-0">
                 <a href="/"
                    class="text-sm leading-6 text-gray-600 hover:text-gray-900"
                    title="Home"
@@ -15,7 +16,7 @@
                     Home
                 </a>
             </div>
-            <div class="pb-6">
+            <div class="pb-6 lg:pb-0">
                 <a href="/blog"
                    class="text-sm leading-6 text-gray-600 hover:text-gray-900"
                    title="Blog"
@@ -23,7 +24,7 @@
                     Blog
                 </a>
             </div>
-            <div class="pb-6">
+            <div class="pb-6 lg:pb-0">
                 <a href="https://github.com/cyberpath-HQ"
                    target="_blank"
                    rel="noopener"
@@ -33,7 +34,7 @@
                     GitHub
                 </a>
             </div>
-            <div class="pb-6">
+            <div class="pb-6 lg:pb-0">
                 <a href="https://discord.gg/WmPc56hYut"
                    target="_blank"
                    rel="noopener"
@@ -43,7 +44,7 @@
                     Discord
                 </a>
             </div>
-            <div class="pb-6">
+            <div class="pb-6 lg:pb-0">
                 <a href="#"
                    class="termly-display-preferences text-sm leading-6 text-gray-600 hover:text-gray-900"
                    title="Consent preferences"
@@ -52,7 +53,7 @@
                 </a>
             </div>
         </nav>
-        <p class="mt-10 text-center text-xs leading-5 text-gray-500 flex items-center justify-center flex-wrap">
+        <p class="text-center text-xs leading-5 text-gray-500 flex items-center justify-center flex-wrap">
             Brought to you with
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="18"
@@ -79,5 +80,6 @@
             <span class="mr-1">.</span>
             All rights reserved.
         </p>
+    <Image src={MadeInEu} alt="Made in Europe" class="mx-auto max-h-10" />
     </div>
 </footer>
