@@ -1,57 +1,52 @@
 ---
 import MadeInEu from '@/assets/made-in-eu.svg';
 import { Image } from 'astro:assets';
+import { translations } from "@/lib/i18n/translations";
+import type { Locale } from "@/lib/i18n/translations";
+
+interface Props {
+    locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const t = translations[locale].nav;
 ---
 
 <footer class="bg-white/25 border-t z-50 relative overflow-hidden">
-    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8 space-y-6">
-        <nav class="columns-2 sm:flex sm:justify-center sm:space-x-12"
+    <div class="mx-auto max-w-7xl overflow-hidden px-4 md:px-6 py-12 md:py-20 space-y-6">
+        <nav class="grid grid-cols-2 sm:flex sm:justify-center sm:gap-x-8 md:gap-x-12 gap-y-4"
              aria-label="Footer"
         >
-            <div class="pb-6 lg:pb-0">
-                <a href="/"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Home"
-                >
-                    Home
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="/blog"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Blog"
-                >
-                    Blog
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="https://github.com/cyberpath-HQ"
-                   target="_blank"
-                   rel="noopener"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="GitHub"
-                >
-                    GitHub
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="https://discord.gg/WmPc56hYut"
-                   target="_blank"
-                   rel="noopener"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Discord Community"
-                >
-                    Discord
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="#"
-                   class="termly-display-preferences text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Consent preferences"
-                >
-                    Consent preferences
-                </a>
-            </div>
+            <a href="#security"
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.security}
+            >
+                {t.security}
+            </a>
+            <a href="#monitoring"
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.monitoring}
+            >
+                {t.monitoring}
+            </a>
+            <a href="#pricing"
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.pricing}
+            >
+                {t.pricing}
+            </a>
+            <a href="#reservation"
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.contact}
+            >
+                {t.contact}
+            </a>
+            <a href="#"
+               class="termly-display-preferences text-sm leading-6 text-gray-600 hover:text-gray-900 text-center col-span-2 sm:col-span-1"
+               title="Consent preferences"
+            >
+                Consent preferences
+            </a>
         </nav>
         <p class="text-center text-xs leading-5 text-gray-500 flex items-center justify-center flex-wrap">
             Brought to you with
