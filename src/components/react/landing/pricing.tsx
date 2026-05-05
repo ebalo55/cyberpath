@@ -108,7 +108,7 @@ export function Pricing({ locale }: PricingProps) {
                                 )}
 
                                 <div className="mb-4 md:mb-6">
-                                    <div className={`w-10 md:w-12 rounded-xl flex items-center justify-center mb-3 md:mb-4 ${
+                                    <div className={`size-10 md:size-12 rounded-xl flex items-center justify-center mb-3 md:mb-4 ${
                                         isHighlighted ? "bg-blue-500/20" : "bg-blue-50"
                                     }`}>
                                         <Icon className={`w-5 md:w-6 ${isHighlighted ? "text-blue-400" : "text-blue-600"}`} />
