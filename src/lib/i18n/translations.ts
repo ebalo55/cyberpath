@@ -187,6 +187,12 @@ export const translations = {
             subtitle:    `Book a free introductory call with our security team.`,
             description: `No commitment. No sales pressure. Just a conversation about your security needs and how Bastion can help.`,
             button:     `Book Your Free Call`,
+            benefits:   [
+                `We listen to your needs`,
+                `No hard selling`,
+                `Clear recommendations`,
+                `Your decision, no pressure`,
+            ],
         },
         cta: {
             title:       `Ready to secure your business?`,
@@ -385,6 +391,12 @@ export const translations = {
             subtitle:    `Prenota una call introduttiva gratuita con il nostro team di sicurezza.`,
             description: `Nessun impegno. Nessuna pressione commerciale. Solo una conversazione sulle tue esigenze di sicurezza e su come Bastion può aiutarti.`,
             button:     `Prenota la Tua Chiamata Gratuita`,
+            benefits:   [
+                `Ascoltiamo le tue esigenze`,
+                `Nessuna vendita aggressiva`,
+                `Raccomandazioni chiare`,
+                `La tua decisione, senza pressione`,
+            ],
         },
         cta: {
             title:       `Pronto a proteggere la tua azienda?`,

@@ -2,48 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Activity, Server, Monitor, Cloud, AppWindow, Globe, Clock, Shield, Zap } from "lucide-react";
+import { translations } from "@/lib/i18n/translations";
 import type { Locale } from "@/lib/i18n/translations";
 
 interface MonitoringSectionProps {
     locale: Locale;
 }
-
-const translations = {
-    en: {
-        title: "24/7/365 Monitoring",
-        subtitle: "Security never sleeps. Neither do we.",
-        description: "Cyber threats don't follow business hours. That's why Bastion monitors your infrastructure continuously—every minute of every day, 365 days a year.",
-        features: {
-            title: "What We Monitor",
-            items: [
-                { icon: Activity, title: "Network Traffic", description: "All incoming and outgoing connections" },
-                { icon: Server, title: "Endpoint Activity", description: "Devices, servers, and workstations" },
-                { icon: Monitor, title: "User Behavior", description: "Login patterns and access attempts" },
-                { icon: Cloud, title: "Cloud Services", description: "AWS, Azure, Google Cloud environments" },
-                { icon: AppWindow, title: "Applications", description: "Your critical business software" },
-                { icon: Globe, title: "Threat Intelligence", description: "Global threat feeds and emerging risks" },
-            ],
-        },
-        badge: "Always On",
-    },
-    it: {
-        title: "Monitoraggio 24/7/365",
- subtitle: "La sicurezza non dorme. Noi nemmeno.",
-        description: "Le minacce informatiche non seguono l'orario d'ufficio. Per questo Bastion monitora la tua infrastruttura continuamente—ogni minuto di ogni giorno, 365 giorni l'anno.",
-        features: {
-            title: "Cosa Monitoriamo",
-            items: [
-                { icon: Activity, title: "Traffico di Rete", description: "Tutte le connessioni in entrata e uscita" },
-                { icon: Server, title: "Attività Endpoint", description: "Dispositivi, server e workstation" },
-                { icon: Monitor, title: "Comportamento Utente", description: "Pattern di accesso e tentativi di login" },
-                { icon: Cloud, title: "Servizi Cloud", description: "Ambienti AWS, Azure, Google Cloud" },
-                { icon: AppWindow, title: "Applicazioni", description: "Il tuo software aziendale critico" },
-                { icon: Globe, title: "Intelligence sulle Minacce", description: "Feed globali e rischi emergenti" },
-            ],
-        },
-        badge: "Sempre Attivo",
-    },
-};
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,36 +32,46 @@ function MonitoringBackground() {
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-[100px]"
             />
+            <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/3 right-1/3 w-32 h-32 border border-blue-100/30 rotate-45"
+            />
+            <motion.div
+                animate={{ rotate: [0, -360] }}
+                transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+                className="absolute bottom-1/3 left-1/3 w-24 h-24 border border-indigo-100/30 rounded-full"
+            />
         </div>
     );
 }
 
 export function MonitoringSection({ locale }: MonitoringSectionProps) {
-    const t = translations[locale];
+    const t = translations[locale].monitoring;
 
     return (
-        <section className="py-28 bg-neutral-50 relative overflow-hidden" id="monitoring">
+        <section className="py-20 md:py-28 bg-neutral-50 relative overflow-hidden" id="monitoring">
             <MonitoringBackground />
 
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={containerVariants}
-                    className="text-center mb-16"
+                    className="text-center mb-12 md:mb-16"
                 >
                     <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-100 rounded-full mb-6">
                         <Clock className="w-4 h-4 text-blue-600" />
                         <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">{t.badge}</span>
                     </motion.div>
-                    <motion.h2 variants={itemVariants} className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-neutral-900 mb-4">
+                    <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-900 mb-3 md:mb-4">
                         {t.title}
                     </motion.h2>
-                    <motion.p variants={itemVariants} className="text-2xl font-semibold text-blue-600 mb-6">
+                    <motion.p variants={itemVariants} className="text-xl md:text-2xl font-semibold text-blue-600 mb-4 md:mb-6">
                         {t.subtitle}
                     </motion.p>
-                    <motion.p variants={itemVariants} className="text-lg text-neutral-600 max-w-2xl mx-auto">
+                    <motion.p variants={itemVariants} className="text-base md:text-lg text-neutral-600 max-w-2xl mx-auto">
                         {t.description}
                     </motion.p>
                 </motion.div>
@@ -107,22 +81,22 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.15 }}
                     variants={containerVariants}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                 >
                     {t.features.items.map((item, idx) => {
-                        const Icon = item.icon;
+                        const Icon = [Activity, Server, Monitor, Cloud, AppWindow, Globe][idx];
                         return (
                             <motion.div
                                 key={idx}
                                 variants={itemVariants}
-                                className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md transition-shadow"
+                                className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-white rounded-xl md:rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md transition-shadow"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                                    <Icon className="w-6 h-6 text-blue-600" />
+                                <div className="w-10 md:w-12 h-10 md:h-12 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                    <Icon className="w-5 md:w-6 text-blue-600" />
                                 </div>
-                                <div className="text-left">
-                                    <h4 className="font-bold text-neutral-900">{item.title}</h4>
-                                    <p className="text-sm text-neutral-500">{item.description}</p>
+                                <div className="text-left min-w-0">
+                                    <h4 className="font-bold text-neutral-900 text-sm md:text-base truncate">{item.title}</h4>
+                                    <p className="text-xs md:text-sm text-neutral-500 truncate">{item.description}</p>
                                 </div>
                             </motion.div>
                         );
@@ -134,26 +108,26 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
-                    className="mt-16 text-center"
+                    className="mt-10 md:mt-16 text-center"
                 >
-                    <div className="inline-flex items-center gap-6 px-8 py-4 bg-white rounded-full border border-neutral-200 shadow-lg">
+                    <div className="inline-flex items-center gap-4 md:gap-6 px-6 md:px-8 py-3 md:py-4 bg-white rounded-full border border-neutral-200 shadow-lg flex-wrap justify-center">
                         <div className="flex items-center gap-2">
                             <motion.div
                                 animate={{ scale: [1, 1.3, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
-                                className="w-3 h-3 bg-green-500 rounded-full"
+                                className="w-2 md:w-3 h-2 md:h-3 bg-green-500 rounded-full"
                             />
-                            <span className="text-sm font-medium text-neutral-700">Live Monitoring</span>
+                            <span className="text-xs md:text-sm font-medium text-neutral-700">{locale === "it" ? "Monitoraggio Live" : "Live Monitoring"}</span>
                         </div>
-                        <div className="w-px h-6 bg-neutral-200" />
+                        <div className="w-px h-4 md:h-6 bg-neutral-200 hidden sm:block" />
                         <div className="flex items-center gap-2">
-                            <Zap className="w-4 h-4 text-yellow-500" />
-                            <span className="text-sm font-medium text-neutral-700">24/7/365</span>
+                            <Zap className="w-4 md:w-5 h-4 md:h-5 text-yellow-500" />
+                            <span className="text-xs md:text-sm font-medium text-neutral-700">24/7/365</span>
                         </div>
-                        <div className="w-px h-6 bg-neutral-200" />
+                        <div className="w-px h-4 md:h-6 bg-neutral-200 hidden sm:block" />
                         <div className="flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-blue-500" />
-                            <span className="text-sm font-medium text-neutral-700">Proactive Defense</span>
+                            <Shield className="w-4 md:w-5 h-4 md:h-5 text-blue-500" />
+                            <span className="text-xs md:text-sm font-medium text-neutral-700">{locale === "it" ? "Difesa Proattiva" : "Proactive Defense"}</span>
                         </div>
                     </div>
                 </motion.div>
