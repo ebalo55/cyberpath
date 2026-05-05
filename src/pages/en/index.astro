@@ -8,23 +8,46 @@ import { ComparisonSection } from "@/components/react/landing/comparison-section
 import { Pricing } from "@/components/react/landing/pricing";
 import { FAQSection } from "@/components/react/landing/faq-section";
 import { ReservationSection } from "@/components/react/landing/reservation-section";
+import { makeJsonLd } from "@/lib/make-json-ld";
+import type { WebSite } from "schema-dts";
 
 const locale = "en";
 
-const date = new Date();
-const json_ld = {
-    "@type":          "WebPage",
-    "@context":       "https://schema.org",
-    "@id":            "https://cyberpath-hq.com/en/",
-    url:              "https://cyberpath-hq.com/en/",
-    name:             "CyberPath - Bastion SOCaaS",
-    description:      "Bastion: Enterprise-grade SOC as a Service for businesses. 24/7 security monitoring, threat detection, and incident response.",
-    inLanguage:       "en-US",
-    datePublished:    `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`,
-};
+const json_ld = makeJsonLd<WebSite>({
+    "@type": "WebSite",
+    "@context": "https://schema.org",
+    "@id": "https://cyberpath-hq.com/",
+    url: "https://cyberpath-hq.com/",
+    name: "CyberPath - Bastion SOCaaS",
+    description: "Bastion: Enterprise-grade SOC as a Service for small and medium businesses. 24/7 security monitoring, threat detection, and incident response.",
+    inLanguage: "en-US",
+    author: {
+        "@type": "Organization",
+        name: "CyberPath",
+        url: "https://cyberpath-hq.com",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "CyberPath",
+    },
+});
 ---
 
-<Layout JSON_LD={ JSON.stringify(json_ld) } seo={ { title: "CyberPath - Bastion SOCaaS", canonical: "https://cyberpath-hq.com/en/", description: "Bastion: Enterprise-grade SOC for businesses." } } locale={locale}>
+<Layout 
+    JSON_LD={ json_ld } 
+    seo={{ 
+        title: "CyberPath - Bastion SOCaaS | Enterprise Security for SMB", 
+        canonical: "https://cyberpath-hq.com/en/", 
+        description: "Bastion provides enterprise-grade SOC as a Service for small and medium businesses. 24/7 security monitoring, threat detection, and incident response at an affordable price.",
+        openGraph: {
+            title: "CyberPath - Bastion SOCaaS",
+            description: "Enterprise-grade SOC as a Service for small and medium businesses",
+            type: "website",
+            url: "https://cyberpath-hq.com/en/",
+        }
+    }} 
+    locale={locale}
+>
     <Hero client:load locale={locale} />
     <VideoSection client:visible locale={locale} />
     <SecuritySection client:visible locale={locale} />
