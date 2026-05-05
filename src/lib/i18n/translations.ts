@@ -1,10 +1,11 @@
 export const translations = {
     en: {
         nav: {
-            services: `Services`,
-            projects: `Projects`,
-            pricing:  `Pricing`,
-            contact:  `Contact`,
+            home:       `Home`,
+            security:   `Security`,
+            monitoring: `Monitoring`,
+            pricing:    `Pricing`,
+            contact:    `Contact`,
         },
         hero: {
             title:       `Bastion`,
@@ -198,10 +199,11 @@ export const translations = {
     },
     it: {
         nav: {
-            services: `Servizi`,
-            projects: `Progetti`,
-            pricing:  `Prezzi`,
-            contact:  `Contatti`,
+            home:       `Home`,
+            security:   `Sicurezza`,
+            monitoring: `Monitoraggio`,
+            pricing:    `Prezzi`,
+            contact:    `Contatti`,
         },
         hero: {
             title:       `Bastion`,

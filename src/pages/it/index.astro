@@ -8,7 +8,6 @@ import { ComparisonSection } from "@/components/react/landing/comparison-section
 import { Pricing } from "@/components/react/landing/pricing";
 import { FAQSection } from "@/components/react/landing/faq-section";
 import { ReservationSection } from "@/components/react/landing/reservation-section";
-import { Cta } from "@/components/react/landing/cta";
 
 const locale = "it";
 
@@ -34,5 +33,4 @@ const json_ld = {
     <Pricing client:visible locale={locale} />
     <FAQSection client:visible locale={locale} />
     <ReservationSection client:visible locale={locale} />
-    <Cta client:visible locale={locale} />
 </Layout>

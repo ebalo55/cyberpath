@@ -5,11 +5,12 @@ import Header from "src/components/astro/common/header.astro";
 import Footer from "src/components/astro/common/footer.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 import { AstroSeo } from "@astrolib/seo";
+import type { Locale } from "@/lib/i18n/translations";
 
 interface Props {
     JSON_LD?: string;
     seo?: AstroSeoProps;
-    locale?: string;
+    locale?: Locale;
 }
 
 const {
@@ -69,7 +70,7 @@ const {
                     style="display:none;visibility:hidden"></iframe>
         </noscript>
         <!-- End Google Tag Manager (noscript) -->
-        <Header/>
+        <Header locale={locale}/>
         <main>
             <slot/>
         </main>
