@@ -204,24 +204,24 @@ export const translations = {
             subtitle:   `Everything you need to know about Bastion`,
             items:     [
                 {
-                    question: `What is SOCaaS?`,
-                    answer:   `SOCaaS (Security Operations Center as a Service) means we provide the same enterprise grade security monitoring that large companies have, without the cost of building it yourself. Our expert analysts monitor your systems, detect threats, and respond to incidents in real time.`,
+                    question: `What is a SOCaaS?`,
+                    answer:   `A SOCaaS (Security Operations Center as a Service) is an enterprise-level security monitoring service typical of enterprise environments. Unlike common providers, our service uses advanced AI models to monitor your systems, detect threats and respond to incidents in real time.`,
                 },
                 {
                     question: `How long does setup take?`,
-                    answer:   `Most environments are up and running within a few days. We work with your existing infrastructure, no complex installations or disruptions to your business.`,
+                    answer:   `Most environments are up and running within a few days. We work with your existing infrastructure, no complex installations or interruptions to your business. The installation is simple, guided and designed to be carried out even by non-technical personnel following our instructions.`,
                 },
                 {
                     question: `What happens if there's a breach?`,
-                    answer:   `If we detect suspicious activity, we immediately alert you and guide you through the response process. Our analysts stay with you until the situation is resolved.`,
+                    answer:   `If we detect suspicious activity, we notify you immediately and, based on the rules of engagement defined during the onboarding phase, the necessary actions are taken to contain and eradicate the threat.`,
                 },
                 {
                     question: `Can I upgrade my plan later?`,
-                    answer:   `Absolutely. As your business grows, you can easily upgrade to a higher plan. There's no friction, no penalties, just more protection when you need it.`,
+                    answer:   `Absolutely. As your business grows, you can easily upgrade to a higher plan. There's no friction, no penalties, just more protection when you need it. You can also add extra endpoints to your plan at any time if needed.`,
                 },
                 {
                     question: `Do you work with small businesses?`,
-                    answer:   `Yes! That's exactly who we serve. We understand SMBs don't have the resources for a full internal security team but you still need protection.`,
+                    answer:   `Yes! We work mainly with SMEs. We know that small businesses often don't have the resources for an in-house security team, and enterprise solutions can be expensive. Bastion is designed to provide enterprise-grade protection at an affordable price for businesses of all sizes.`,
                 },
             ],
         },
