@@ -21,7 +21,7 @@ const itemVariants = {
 
 function ReservationBackground() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -z-1">
             <motion.div
                 animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -50,7 +50,7 @@ export function ReservationSection({ locale }: ReservationSectionProps) {
     const t = translations[locale].reservation;
 
     return (
-        <section className="py-20 md:py-28 relative" id="reservation">
+        <section className="py-20 md:py-28 relative overflow-hidden" id="reservation">
             <ReservationBackground />
 
             <div className="max-w-4xl mx-auto px-4 md:px-6">
@@ -64,7 +64,7 @@ export function ReservationSection({ locale }: ReservationSectionProps) {
                     <div className="grid lg:grid-cols-2">
                         <div className="p-6 md:p-8 lg:p-10">
                             <motion.div variants={itemVariants} className="flex items-center gap-3 mb-5 md:mb-6">
-                                <div className="w-10 md:w-12 h-10 md:h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                                <div className="w-10 md:w-12 h-10 md:h-12 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
                                     <Calendar className="w-5 md:w-6 h-5 md:h-6 text-blue-600" />
                                 </div>
                                 <div>
@@ -90,7 +90,7 @@ export function ReservationSection({ locale }: ReservationSectionProps) {
                                 variants={itemVariants}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                href="https://cal.com/cyberpath/bastion-intro"
+                                href="https://cal.eu/emanuele-balsamo-hzrxfr/introduzione-a-cyberpath-bastion"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/25 text-sm md:text-base"
@@ -108,13 +108,13 @@ export function ReservationSection({ locale }: ReservationSectionProps) {
                                 transition={{ delay: 0.2 }}
                                 className="text-center"
                             >
-                                <div className="w-16 md:w-20 h-16 md:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4 md:mb-6">
+                                <div className="w-16 md:w-20 h-16 md:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4 md:mb-6 shrink-0">
                                     <Shield className="w-8 md:w-10 h-8 md:h-10 text-blue-400" />
                                 </div>
-                                <h4 className="text-lg md:text-xl font-bold text-white mb-2">{locale === "it" ? "30 Minuti" : "30 Minutes"}</h4>
-                                <p className="text-neutral-400 text-sm md:text-base">{locale === "it" ? "Call introduttiva gratuita" : "Free introductory call"}</p>
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-2">{t.duration}</h4>
+                                <p className="text-neutral-400 text-sm md:text-base">{t.duration_label}</p>
                                 <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-white/10">
-                                    <p className="text-neutral-500 text-xs md:text-sm">{locale === "it" ? "Scopri come Bastion può proteggere la tua azienda—senza alcun impegno." : "See how Bastion can protect your business—without any obligation."}</p>
+                                    <p className="text-neutral-500 text-xs md:text-sm">{t.duration_desc}</p>
                                 </div>
                             </motion.div>
                         </div>

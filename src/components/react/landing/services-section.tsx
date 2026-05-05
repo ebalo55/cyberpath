@@ -44,7 +44,7 @@ const itemVariants = {
 
 function ServicesBackground() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -z-1">
             <motion.div
                 animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
@@ -71,12 +71,18 @@ function ServiceCard({
     service, 
     locale, 
     isExpanded, 
-    onToggle 
+    onToggle,
+    popularLabel,
+    comingSoonLabel,
+    addonsLabel,
 }: { 
     service: ServiceItem; 
     locale: Locale;
     isExpanded: boolean;
     onToggle: () => void;
+    popularLabel: string;
+    comingSoonLabel: string;
+    addonsLabel: string;
 }) {
     const Icon = serviceIcons[service.id] || Shield;
     
@@ -99,13 +105,13 @@ function ServiceCard({
                 {service.popular && !service.comingSoon && (
                     <div className="absolute -top-2.5 left-4 px-2.5 py-0.5 bg-blue-600 text-white text-xs font-semibold rounded-full flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        {locale === 'en' ? 'Popular' : 'Popolare'}
+                        {popularLabel}
                     </div>
                 )}
                 
                 {service.comingSoon && (
                     <div className="absolute -top-2.5 left-4 px-2.5 py-0.5 bg-slate-500 text-white text-xs font-semibold rounded-full">
-                        {locale === 'en' ? 'Coming Soon' : 'In Arrivo'}
+                        {comingSoonLabel}
                     </div>
                 )}
 
@@ -156,7 +162,7 @@ function ServiceCard({
                                 {service.addons && service.addons.length > 0 && (
                                     <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/50 mb-4">
                                         <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-                                            {locale === 'en' ? 'Add-ons' : 'Add-on'}
+                                            {addonsLabel}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
                                             {service.addons.map((addon, i) => (
@@ -204,7 +210,7 @@ export function ServicesSection({ locale }: ServicesSectionProps) {
     return (
         <section 
             id="services"
-            className="relative py-16 md:py-24"
+            className="relative py-16 md:py-24 overflow-hidden"
         >
             <ServicesBackground />
             
@@ -237,6 +243,9 @@ export function ServicesSection({ locale }: ServicesSectionProps) {
                             locale={locale}
                             isExpanded={expandedId === service.id}
                             onToggle={() => setExpandedId(expandedId === service.id ? null : service.id)}
+                            popularLabel={t.popular}
+                            comingSoonLabel={t.comingSoon}
+                            addonsLabel={t.addons}
                         />
                     ))}
                 </motion.div>

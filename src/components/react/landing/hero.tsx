@@ -111,8 +111,8 @@ export function Hero({ locale }: HeroProps) {
     const t = translations[locale].hero;
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 500], [0, 200]);
-    const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-    const scale = useTransform(scrollY, [0, 400], [1, 0.95]);
+    const opacity = useTransform(scrollY, [50, 450], [1, 0]);
+    const scale = useTransform(scrollY, [50, 450], [1, 0.95]);
     const springY = useSpring(y, { stiffness: 100, damping: 30 });
 
     return (
@@ -129,22 +129,6 @@ export function Hero({ locale }: HeroProps) {
                 style={{ y: springY, opacity, scale }}
                 className="relative z-10 max-w-5xl mx-auto px-4 md:px-6 text-center"
             >
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-sm border border-blue-100 shadow-sm mb-6 md:mb-8"
-                >
-                    <motion.span
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-2 h-2 bg-blue-500 rounded-full"
-                    />
-                    <span className="text-xs font-semibold text-blue-700 tracking-wider uppercase">
-                        {locale === "it" ? "Un prodotto CyberPath" : "A CyberPath Product"}
-                    </span>
-                </motion.div>
-
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -181,7 +165,7 @@ export function Hero({ locale }: HeroProps) {
                     <motion.a
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        href={`/${locale}/pricing`}
+                        href={`/${locale}/#reservation`}
                         className="group px-7 md:px-9 py-3.5 md:py-4.5 text-sm md:text-base font-bold text-white bg-neutral-900 rounded-full hover:bg-neutral-800 shadow-xl shadow-neutral-900/15 transition-all flex items-center gap-2"
                     >
                         {t.cta.primary}
@@ -189,7 +173,7 @@ export function Hero({ locale }: HeroProps) {
                     </motion.a>
                     <motion.a
                         whileHover={{ scale: 1.02 }}
-                        href={`/${locale}/pricing`}
+                        href={`/${locale}/#pricing`}
                         className="px-7 md:px-9 py-3.5 md:py-4.5 text-sm md:text-base font-bold text-neutral-600 hover:text-neutral-900 transition-colors"
                     >
                         {t.cta.secondary}

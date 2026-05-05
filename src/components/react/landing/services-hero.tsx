@@ -112,7 +112,7 @@ export function ServicesHero({ locale }: ServicesHeroProps) {
     };
 
     return (
-        <section className="relative min-h-[60vh] flex items-center justify-center">
+        <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
             <GradientMesh />
             <ParticleField />
             
@@ -132,7 +132,7 @@ export function ServicesHero({ locale }: ServicesHeroProps) {
                 >
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-600/10 border border-blue-600/20 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium">
                         <Shield className="w-4 h-4" />
-                        {locale === 'en' ? 'Cybersecurity Services' : 'Servizi di Cybersecurity'}
+                        {t.hero.tagline}
                     </span>
                 </motion.div>
 
@@ -164,14 +164,14 @@ export function ServicesHero({ locale }: ServicesHeroProps) {
                         onClick={scrollToServices}
                         className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25"
                     >
-                        {locale === 'en' ? 'Explore Services' : 'Esplora i Servizi'}
+{t.hero.cta}
                         <ArrowRight className="w-5 h-5" />
                     </button>
                     <a
-                        href={`/${locale}/#reservation`}
+                        href={`/${locale}/#contact`}
                         className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold rounded-xl transition-all duration-200"
                     >
-                        {locale === 'en' ? 'Contact Us' : 'Contattaci'}
+                        {t.hero.cta_secondary}
                     </a>
                 </motion.div>
             </div>

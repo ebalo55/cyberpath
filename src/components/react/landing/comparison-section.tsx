@@ -37,7 +37,7 @@ const itemVariants = {
 
 function ComparisonBackground() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -z-1">
             <motion.div
                 animate={{
                     x: [
@@ -123,7 +123,7 @@ export function ComparisonSection({
     const t = translations[locale].comparison;
 
     return (
-        <section className="py-20 md:py-28 relative" id="comparison">
+        <section className="py-20 md:py-28 relative overflow-hidden" id="comparison">
             <ComparisonBackground />
 
             <div className="max-w-6xl mx-auto px-4 md:px-6 relative">
@@ -136,7 +136,7 @@ export function ComparisonSection({
                     variants={containerVariants}
                     className="text-center mb-12 md:mb-16"
                 >
-                    <motion.p variants={itemVariants} className="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">
+                    <motion.p variants={itemVariants} className="text-xs font-bold text-blue-600 uppercase tracking-[0.1em] mb-4">
                         {t.subtitle}
                     </motion.p>
                     <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-900 mb-3 md:mb-4 px-4">
@@ -177,7 +177,11 @@ export function ComparisonSection({
                             </ul>
 
                             <div className="pt-4 md:pt-6 border-t border-neutral-200">
-                                <span className="text-2xl md:text-3xl font-bold text-neutral-900">{t.traditional.price}</span>
+                                <span className="text-2xl md:text-3xl font-bold text-neutral-900">
+                                    {t.traditional.price}
+                                </span>
+                                <span className="text-base text-neutral-600 font-normal ml-1">{t.traditional.period}</span>
+
                                 <p className="text-xs md:text-sm text-neutral-500 mt-1">{t.traditional.note}</p>
                             </div>
                         </motion.div>
@@ -222,7 +226,6 @@ export function ComparisonSection({
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold text-white">{t.bastion.title}</h3>
-                                        <p className="text-sm text-blue-400">{locale === `it` ? `Più accessibile` : `More affordable`}</p>
                                     </div>
                                 </div>
 
@@ -238,6 +241,7 @@ export function ComparisonSection({
                                 <div className="pt-4 md:pt-6 border-t border-white/10 flex items-center justify-between">
                                     <div>
                                         <span className="text-2xl md:text-3xl font-bold text-white">{t.bastion.price}</span>
+                                        <span className="text-base text-neutral-400 font-normal ml-1">{t.bastion.period}</span>
                                         <p className="text-xs md:text-sm text-neutral-400 mt-1">{t.bastion.note}</p>
                                     </div>
                                     <motion.div

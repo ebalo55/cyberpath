@@ -21,7 +21,7 @@ const itemVariants = {
 
 function SecurityBackground() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -z-1">
             <motion.div
                 animate={{ x: [0, 20, 0], y: [0, -30, 0] }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -151,7 +151,7 @@ export function SecuritySection({ locale }: SecuritySectionProps) {
                                 <motion.div
                                     key={idx}
                                     variants={itemVariants}
-                                    className="flex items-center gap-2 md:gap-3"
+                                    className="flex items-top gap-2 md:gap-3"
                                 >
                                     <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
                                         <CheckCircle className="w-3 md:w-4 text-green-400" />

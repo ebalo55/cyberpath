@@ -22,7 +22,7 @@ const itemVariants = {
 
 function VideoBackground() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -z-1">
             <motion.div
                 animate={{ x: [0, 20, 0], y: [0, -20, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -51,7 +51,7 @@ export function VideoSection({ locale }: VideoSectionProps) {
     const t = translations[locale].video;
 
     return (
-        <section className="py-16 md:py-24 relative">
+        <section className="py-16 md:py-24 relative overflow-hidden">
             <VideoBackground />
 
             <div className="max-w-5xl mx-auto px-4 md:px-6">
@@ -83,10 +83,6 @@ export function VideoSection({ locale }: VideoSectionProps) {
                         controls
                         preload="metadata"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 pointer-events-none">
-                        <span className="text-white/80 text-sm font-medium">CyberPath Bastion - SOCaaS Introduction</span>
-                    </div>
                 </motion.div>
             </div>
         </section>

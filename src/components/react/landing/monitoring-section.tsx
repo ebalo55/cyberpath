@@ -21,7 +21,7 @@ const itemVariants = {
 
 function MonitoringBackground() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -z-1">
             <motion.div
                 animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -50,7 +50,7 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
     const t = translations[locale].monitoring;
 
     return (
-        <section className="py-20 md:py-28 relative" id="monitoring">
+        <section className="py-20 md:py-28 relative overflow-hidden" id="monitoring">
             <MonitoringBackground />
 
             <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
@@ -117,7 +117,7 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
                                 transition={{ duration: 2, repeat: Infinity }}
                                 className="w-2 md:w-3 h-2 md:h-3 bg-green-500 rounded-full"
                             />
-                            <span className="text-xs md:text-sm font-medium text-neutral-700">{locale === "it" ? "Monitoraggio Live" : "Live Monitoring"}</span>
+                            <span className="text-xs md:text-sm font-medium text-neutral-700">{t.live_monitoring}</span>
                         </div>
                         <div className="w-px h-4 md:h-6 bg-neutral-200 hidden sm:block" />
                         <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
                         <div className="w-px h-4 md:h-6 bg-neutral-200 hidden sm:block" />
                         <div className="flex items-center gap-2">
                             <Shield className="w-4 md:w-5 h-4 md:h-5 text-blue-500" />
-                            <span className="text-xs md:text-sm font-medium text-neutral-700">{locale === "it" ? "Difesa Proattiva" : "Proactive Defense"}</span>
+                            <span className="text-xs md:text-sm font-medium text-neutral-700">{t.proactive_defense}</span>
                         </div>
                     </div>
                 </motion.div>
