@@ -282,7 +282,7 @@ export const translations = {
                             desc: `Full visibility into your cloud infrastructure`,
                         },
                         {
-                            name: `Network Monitoring (Suricata)`,
+                            name: `Network Monitoring`,
                             desc: `Deep packet inspection and network analysis`,
                         },
                         {
@@ -322,7 +322,6 @@ export const translations = {
                     longDesc:  `Transform your employees into a human firewall with our engaging, practical online security awareness program designed for non technical staff.`,
                     features:  [
                         `Interactive online modules`,
-                        `Phishing simulation exercises`,
                         `Password security best practices`,
                         `Social engineering awareness`,
                         `GDPR and data handling`,
@@ -335,11 +334,11 @@ export const translations = {
                 },
                 {
                     id:        `backup`,
-                    name:      `Secure Backup`,
+                    name:      `Backup`,
                     category:  `infrastructure`,
-                    tagline:   `Ultra secure backup solution`,
-                    shortDesc: `Enterprise grade backup.`,
-                    longDesc:  `Post-quantum secure backup solution that keeps your data safe.`,
+                    tagline:   `Secure backup solution`,
+                    shortDesc: `Enterprise grade backup solution compliant with the latest security standards and regulations.`,
+                    longDesc:  `Secure, post-quantum backup solution that keeps your data safe.`,
                     features:  [
                         `Post quantum encryption`,
                         `Multi-user restore`,
@@ -604,7 +603,7 @@ export const translations = {
             title:       `I Nostri Servizi`,
             subtitle:    `Soluzioni di cybersecurity complete e personalizzate`,
             popular:     `Popolare`,
-            comingSoon:   `In Arrivo`,
+            comingSoon:  `In Arrivo`,
             addons:      `Add-on`,
             hero:        {
                 tagline:       `Servizi di Cybersecurity`,
@@ -616,9 +615,9 @@ export const translations = {
                     id:        `bastion`,
                     name:      `Bastion`,
                     category:  `socaas`,
-                    tagline:   `Il tuo centro operativo di sicurezza`,
+                    tagline:   `Il tuo SOC dedicato`,
                     shortDesc: `Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.`,
-                    longDesc:  `Bastion è il tuo centro operativo di sicurezza dedicato, che monitora i tuoi sistemi 24 ore su 24 e risponde alle minacce in tempo reale.`,
+                    longDesc:  `Bastion è il tuo SOC dedicato, che monitora i tuoi sistemi 24 ore su 24 e risponde alle minacce in tempo reale.`,
                     features:  [
                         `Monitoraggio SOC 24/7`,
                         `Rilevamento e caccia alle minacce`,
@@ -637,7 +636,7 @@ export const translations = {
                             desc: `Visibilità completa sulla tua infrastruttura cloud`,
                         },
                         {
-                            name: `Monitoraggio Rete (Suricata)`,
+                            name: `Monitoraggio Rete`,
                             desc: `Ispezione profonda dei pacchetti e analisi di rete`,
                         },
                         {
@@ -654,7 +653,7 @@ export const translations = {
                     name:      `Penetration Testing`,
                     category:  `assessment`,
                     tagline:   `Trova le vulnerabilità prima degli attaccanti`,
-                    shortDesc: `Test di penetrazione completi per identificare debolezze di sicurezza.`,
+                    shortDesc: `Penetration test completi per identificare debolezze di sicurezza.`,
                     longDesc:  `Il nostro team esperto simula attacchi reali per scoprire vulnerabilità nei tuoi sistemi, applicazioni e infrastruttura prima che malintenzionati possano sfruttarle.`,
                     features:  [
                         `Test delle applicazioni web`,
@@ -677,7 +676,6 @@ export const translations = {
                     longDesc:  `Trasforma i tuoi dipendenti in un firewall umano con il nostro coinvolgente programma online di consapevolezza sulla sicurezza, progettato per personale non tecnico.`,
                     features:  [
                         `Moduli interattivi online`,
-                        `Esercizi di simulazione phishing`,
                         `Best practice per la sicurezza delle password`,
                         `Consapevolezza sull'ingegneria sociale`,
                         `GDPR e gestione dei dati`,
@@ -690,11 +688,11 @@ export const translations = {
                 },
                 {
                     id:        `backup`,
-                    name:      `Backup Sicuro`,
+                    name:      `Backup`,
                     category:  `infrastructure`,
-                    tagline:   `Soluzione di backup ultra sicura`,
-                    shortDesc: `Soluzione di backup di livello enterprise in arrivo.`,
-                    longDesc:  `Stiamo lavorando a una soluzione di backup ultra sicura che manterra i tuoi dati al sicuro. Resta sintonizzato per il lancio.`,
+                    tagline:   `Soluzione di backup sicura`,
+                    shortDesc: `Backup di livello enterprise compliant con gli ultimi standard di sicurezza e le più recenti regolamentazioni.`,
+                    longDesc:  `Soluzione di backup sicura e post-quantistica che mantiene i tuoi dati al sicuro.`,
                     features:  [
                         `Crittografia post quantistica`,
                         `Ripristino multi utente`,
