@@ -1,9 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Hero from "@/components/astro/landing/hero.astro";
-import Services from "@/components/astro/landing/services.astro";
-import Pricing from "@/components/astro/landing/pricing.astro";
-import CTA from "@/components/astro/landing/cta.astro";
+import { Hero } from "@/components/react/landing/hero";
+import { CostComparison } from "@/components/react/landing/cost-comparison";
+import { Plans } from "@/components/react/landing/plans";
 
 const locale = "en";
 
@@ -13,16 +12,15 @@ const json_ld = {
     "@context":       "https://schema.org",
     "@id":            "https://cyberpath-hq.com/en/",
     url:              "https://cyberpath-hq.com/en/",
-    name:             "CyberPath - Bastion SOCaaS for Small Businesses",
+    name:             "CyberPath - Bastion SOCaaS",
     description:      "Bastion: Enterprise-grade SOC as a Service for businesses. 24/7 security monitoring, threat detection, and incident response.",
     inLanguage:       "en-US",
     datePublished:    `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`,
 };
 ---
 
-<Layout JSON_LD={ JSON.stringify(json_ld) } seo={ { title: "CyberPath - Bastion SOCaaS", canonical: "https://cyberpath-hq.com/en/", description: "Bastion: Enterprise-grade SOC as a Service for businesses." } } locale={locale}>
-    <Hero locale={locale} />
-    <Services locale={locale} />
-    <Pricing locale={locale} />
-    <CTA locale={locale} />
+<Layout JSON_LD={ JSON.stringify(json_ld) } seo={ { title: "CyberPath - Bastion SOCaaS", canonical: "https://cyberpath-hq.com/en/", description: "Bastion: Enterprise-grade SOC for businesses." } } locale={locale}>
+    <Hero client:load locale={locale} />
+    <CostComparison client:visible locale={locale} />
+    <Plans client:visible locale={locale} />
 </Layout>
