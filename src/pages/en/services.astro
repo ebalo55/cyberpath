@@ -1,0 +1,36 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Hero } from "@/components/react/landing/hero";
+import { VideoSection } from "@/components/react/landing/video-section";
+import { SecuritySection } from "@/components/react/landing/security-section";
+import { MonitoringSection } from "@/components/react/landing/monitoring-section";
+import { ComparisonSection } from "@/components/react/landing/comparison-section";
+import { Pricing } from "@/components/react/landing/pricing";
+import { FAQSection } from "@/components/react/landing/faq-section";
+import { ReservationSection } from "@/components/react/landing/reservation-section";
+
+const locale = "en";
+
+const date = new Date();
+const json_ld = {
+    "@type":          "WebPage",
+    "@context":       "https://schema.org",
+    "@id":            "https://cyberpath-hq.com/en/services",
+    url:              "https://cyberpath-hq.com/en/services",
+    name:             "CyberPath - Services",
+    description:      "Our cybersecurity services: SOCaaS, training, consulting, and more.",
+    inLanguage:       "en-US",
+    datePublished:    `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`,
+};
+---
+
+<Layout JSON_LD={ JSON.stringify(json_ld) } seo={ { title: "CyberPath - Services", canonical: "https://cyberpath-hq.com/en/services", description: "Our cybersecurity services: SOCaaS, training, consulting, and more." } } locale={locale}>
+    <Hero client:load locale={locale} />
+    <VideoSection client:visible locale={locale} />
+    <SecuritySection client:visible locale={locale} />
+    <MonitoringSection client:visible locale={locale} />
+    <ComparisonSection client:visible locale={locale} />
+    <Pricing client:visible locale={locale} />
+    <FAQSection client:visible locale={locale} />
+    <ReservationSection client:visible locale={locale} />
+</Layout>

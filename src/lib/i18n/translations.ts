@@ -2,6 +2,8 @@ export const translations = {
     en: {
         nav: {
             home:       `Home`,
+            services:   `Services`,
+            blog:       `Blog`,
             security:   `Security`,
             monitoring: `Monitoring`,
             pricing:    `Pricing`,
@@ -243,6 +245,8 @@ export const translations = {
     it: {
         nav: {
             home:       `Home`,
+            services:   `Servizi`,
+            blog:       `Blog`,
             security:   `Sicurezza`,
             monitoring: `Monitoraggio`,
             pricing:    `Prezzi`,

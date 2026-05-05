@@ -31,10 +31,11 @@ const t = translations[locale].nav;
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-10 items-center">
-      <a href="#security" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.security || "Security"}</a>
-      <a href="#monitoring" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.monitoring || "Monitoring"}</a>
-      <a href="#pricing" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.pricing}</a>
-      <a href="#reservation" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.contact || "Contact"}</a>
+      <a href={`/${locale}/`} class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.home}</a>
+      <a href={`/${locale}/#security`} class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.security}</a>
+      <a href={`/${locale}/#reservation`} class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.contact}</a>
+      <a href={`/${locale}/services`} class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.services}</a>
+      <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">{t.blog}</a>
     </div>
   </nav>
   <div class="hidden lg:hidden" role="dialog" aria-modal="true" id="mobile-menu">
@@ -55,10 +56,11 @@ const t = translations[locale].nav;
       <div class="mt-6 flow-root">
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
-            <a href="#security" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.security || "Security"}</a>
-            <a href="#monitoring" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.monitoring || "Monitoring"}</a>
-            <a href="#pricing" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.pricing}</a>
-            <a href="#reservation" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.contact || "Contact"}</a>
+            <a href="/blog" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.blog}</a>
+            <a href={`/${locale}/services`} class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.services}</a>
+            <a href={`/${locale}/#security`} class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.security}</a>
+            <a href={`/${locale}/#pricing`} class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.pricing}</a>
+            <a href={`/${locale}/#reservation`} class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{t.contact}</a>
           </div>
         </div>
       </div>
