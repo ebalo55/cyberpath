@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Shield, Zap, Building } from "lucide-react";
+import { Check, Shield, Zap, Building, Star } from "lucide-react";
 import { translations } from "@/lib/i18n/translations";
 import type { Locale } from "@/lib/i18n/translations";
 
@@ -100,9 +100,16 @@ export function Pricing({ locale }: PricingProps) {
                                 }`}
                             >
                                 {isHighlighted && (
-                                    <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2">
-                                        <span className="px-3 md:px-4 py-1 md:py-1.5 bg-blue-500 text-white text-xs font-bold rounded-full">
-                                            {locale === "it" ? "Più Popolare" : "Most Popular"}
+                                    <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 z-20">
+                                        <span className="px-3 md:px-4 py-1 md:py-1.5 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center gap-1.5">
+                                            <motion.span
+                                                initial={{ scale: 0 }}
+                                                animate={{ scale: [0, 1.1, 1] }}
+                                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                            >
+                                                <Star className="w-3 md:w-4" />
+                                            </motion.span>
+                                            {t.popular}
                                         </span>
                                     </div>
                                 )}

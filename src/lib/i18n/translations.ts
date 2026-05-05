@@ -10,7 +10,7 @@ export const translations = {
         hero: {
             title:       `Bastion`,
             subtitle:    `SOC as a Service`,
-            description: `Enterprise-grade security operations for small and medium businesses. Continuous monitoring, threat detection, and incident response—at a fraction of the cost of an in-house SOC.`,
+            description: `Enterprise grade security operations for small and medium businesses. Continuous monitoring, threat detection, and incident response at a fraction of the cost of an in house SOC.`,
             cta:         {
                 primary:   `Get Started`,
                 secondary: `View Pricing`,
@@ -21,24 +21,42 @@ export const translations = {
             subtitle: `Watch a brief introduction to our SOCaaS and understand how we defend your infrastructure 24/7.`,
         },
         security: {
-            title:       `Security Isn't Optional—It's Essential`,
+            title:       `Security Isn't Optional, It's Essential`,
             subtitle:    `Every day, small and medium businesses face cyber threats that can devastate years of hard work. Are you protected?`,
             problems:   {
                 title: `What Could Happen Without Proper Security`,
                 items:  [
-                    { icon: `💰`, title: `Financial Loss`, description: `Ransomware attacks can lock you out of your systems until you pay—or lose everything.` },
-                    { icon: `📉`, title: `Business Disruption`, description: `A single breach can halt operations for days or weeks, costing you clients and revenue.` },
-                    { icon: `⚖️`, title: `Legal Consequences`, description: `Data breaches trigger GDPR notifications, fines, and potential lawsuits.` },
-                    { icon: `🏷️`, title: `Reputation Damage`, description: `Clients trust you with their data. A breach can destroy that trust permanently.` },
-                    { icon: `🔐`, title: `Lost Access`, description: `Hackers can steal credentials, locking you out of your own accounts and systems.` },
-                    { icon: `🤝`, title: `Supply Chain Risk`, description: `If attackers compromise you, they can reach your clients and partners too.` },
+                    {
+                        title:       `Financial Loss`,
+                        description: `Ransomware attacks can lock you out of your systems until you pay or lose everything.`,
+                    },
+                    {
+                        title:       `Business Disruption`,
+                        description: `A single breach can halt operations for days or weeks, costing you clients and revenue.`,
+                    },
+                    {
+                        title:       `Legal Consequences`,
+                        description: `Data breaches trigger GDPR notifications, fines, and potential lawsuits.`,
+                    },
+                    {
+                        title:       `Reputation Damage`,
+                        description: `Clients trust you with their data. A breach can destroy that trust permanently.`,
+                    },
+                    {
+                        title:       `Lost Access`,
+                        description: `Hackers can steal credentials, locking you out of your own accounts and systems.`,
+                    },
+                    {
+                        title:       `Supply Chain Risk`,
+                        description: `If attackers compromise you, they can reach your clients and partners too.`,
+                    },
                 ],
             },
             solution: {
                 title:    `This is Where Bastion Comes In`,
                 subtitle: `We're your security team, watching over your business around the clock so you can focus on what you do best.`,
                 features: [
-                    `We monitor your systems 24/7/365—every day, all day`,
+                    `We monitor your systems 24/7/365, every day, all day`,
                     `We detect threats before they become breaches`,
                     `We respond immediately when something suspicious happens`,
                     `We provide clear reports you can understand`,
@@ -49,16 +67,34 @@ export const translations = {
         monitoring: {
             title:       `24/7/365 Monitoring`,
             subtitle:    `Security never sleeps. Neither do we.`,
-            description: `Cyber threats don't follow business hours. That's why Bastion monitors your infrastructure continuously—every minute of every day, 365 days a year.`,
-            features:   {
+            description: `Cyber threats don't follow business hours. That's why Bastion monitors your infrastructure continuously, every minute of every day, 365 days a year.`,
+            features:    {
                 title:    `What We Monitor`,
                 items:    [
-                    { title: `Network Traffic`, description: `All incoming and outgoing connections` },
-                    { title: `Endpoint Activity`, description: `Devices, servers, and workstations` },
-                    { title: `User Behavior`, description: `Login patterns and access attempts` },
-                    { title: `Cloud Services`, description: `AWS, Azure, Google Cloud environments` },
-                    { title: `Applications`, description: `Your critical business software` },
-                    { title: `Threat Intelligence`, description: `Global threat feeds and emerging risks` },
+                    {
+                        title:       `Network Traffic`,
+                        description: `All incoming and outgoing connections`,
+                    },
+                    {
+                        title:       `Endpoint Activity`,
+                        description: `Devices, servers, and workstations`,
+                    },
+                    {
+                        title:       `User Behavior`,
+                        description: `Login patterns and access attempts`,
+                    },
+                    {
+                        title:       `Cloud Services`,
+                        description: `AWS, Azure, Google Cloud environments`,
+                    },
+                    {
+                        title:       `Applications`,
+                        description: `Your critical business software`,
+                    },
+                    {
+                        title:       `Threat Intelligence`,
+                        description: `Global threat feeds and emerging risks`,
+                    },
                 ],
             },
             badge: `Always On`,
@@ -71,12 +107,12 @@ export const translations = {
                 title:  `Traditional In-House SOC`,
                 items:  [
                     `Hiring and training security analysts`,
-                    `24/7 shifts require 4-5 employees`,
+                    `24/7 shifts require 4 or 5 employees`,
                     `SIEM, EDR, and monitoring tools`,
                     `Infrastructure and maintenance`,
                     `Continuous training and certs`,
                 ],
-                price:     `€4,000 - €12,000`,
+                price:     `4,000 to 12,000 euros`,
                 period:   `/month`,
                 note:     `Just for staffing alone.`,
             },
@@ -99,6 +135,7 @@ export const translations = {
         pricing: {
             title:      `Simple, Transparent Pricing`,
             subtitle:   `Choose the plan that fits your business`,
+            popular:    `Most Popular`,
             plans:      {
                 scudo: {
                     name:        `SCUDO`,
@@ -137,13 +174,13 @@ export const translations = {
                 },
                 bastione: {
                     name:        `BASTIONE`,
-                    description: `For businesses needing full-scale security operations`,
+                    description: `For businesses needing full scale security operations`,
                     price:       `€750`,
                     period:      `/month`,
                     endpoints:   `15 endpoints included`,
                     features:    [
                         `24/7 SOC priority monitoring`,
-                        `Real-time vulnerability scanning`,
+                        `Real time vulnerability scanning`,
                         `Weekly security reports`,
                         `Dedicated security analyst`,
                         `Full incident response`,
@@ -154,7 +191,7 @@ export const translations = {
                     highlight: false,
                 },
             },
-            note: "* All prices exclude VAT. Endpoint packages available for additional devices.",
+            note: `* All prices exclude VAT. Endpoint packages available for additional devices.`,
         },
         faq: {
             title:      `Frequently Asked Questions`,
@@ -162,23 +199,23 @@ export const translations = {
             items:     [
                 {
                     question: `What is SOCaaS?`,
-                    answer:  `SOCaaS (Security Operations Center as a Service) means we provide the same enterprise-grade security monitoring that large companies have—without the cost of building it yourself. Our expert analysts monitor your systems, detect threats, and respond to incidents in real-time.`,
+                    answer:   `SOCaaS (Security Operations Center as a Service) means we provide the same enterprise grade security monitoring that large companies have, without the cost of building it yourself. Our expert analysts monitor your systems, detect threats, and respond to incidents in real time.`,
                 },
                 {
                     question: `How long does setup take?`,
-                    answer:  `Most environments are up and running within a few days. We work with your existing infrastructure—no complex installations or disruptions to your business.`,
+                    answer:   `Most environments are up and running within a few days. We work with your existing infrastructure, no complex installations or disruptions to your business.`,
                 },
                 {
                     question: `What happens if there's a breach?`,
-                    answer:  `If we detect suspicious activity, we immediately alert you and guide you through the response process. Our analysts stay with you until the situation is resolved.`,
+                    answer:   `If we detect suspicious activity, we immediately alert you and guide you through the response process. Our analysts stay with you until the situation is resolved.`,
                 },
                 {
                     question: `Can I upgrade my plan later?`,
-                    answer:  `Absolutely. As your business grows, you can easily upgrade to a higher plan. There's no friction, no penalties—just more protection when you need it.`,
+                    answer:   `Absolutely. As your business grows, you can easily upgrade to a higher plan. There's no friction, no penalties, just more protection when you need it.`,
                 },
                 {
                     question: `Do you work with small businesses?`,
-                    answer:  `Yes! That's exactly who we serve. We understand SMBs don't have the resources for a full internal security team—but you still need protection.`,
+                    answer:   `Yes! That's exactly who we serve. We understand SMBs don't have the resources for a full internal security team but you still need protection.`,
                 },
             ],
         },
@@ -186,8 +223,8 @@ export const translations = {
             title:       `Ready to Get Protected?`,
             subtitle:    `Book a free introductory call with our security team.`,
             description: `No commitment. No sales pressure. Just a conversation about your security needs and how Bastion can help.`,
-            button:     `Book Your Free Call`,
-            benefits:   [
+            button:      `Book Your Free Call`,
+            benefits:    [
                 `We listen to your needs`,
                 `No hard selling`,
                 `Clear recommendations`,
@@ -213,8 +250,8 @@ export const translations = {
         },
         hero: {
             title:       `Bastion`,
-            subtitle:    `SOC come Servizio`,
-            description: `Operazioni di sicurezza di livello enterprise per piccole e medie aziende. Monitoraggio continuo, rilevamento minacce e risposta agli incidenti—a una frazione del costo di un SOC interno.`,
+            subtitle:    `AI SOC as a Service`,
+            description: `Sicurezza di livello enterprise per piccole e medie aziende. Monitoraggio continuo, rilevamento minacce e risposta agli incidenti a una frazione del costo di un SOC.`,
             cta:         {
                 primary:   `Inizia Ora`,
                 secondary: `Vedi Prezzi`,
@@ -222,27 +259,45 @@ export const translations = {
         },
         video: {
             title:    `Scopri Come Bastion Protegge la Tua Azienda`,
-            subtitle: `Guarda una breve introduzione al nostro SOCaaS e capisci come difendiamo la tua infrastruttura 24/7.`,
+            subtitle: `Guarda una breve introduzione al nostro SOC e capisci come difendiamo la tua infrastruttura 24/7.`,
         },
         security: {
-            title:       `La Sicurezza Non �� Opzionale—È Essenziale`,
+            title:       `La Sicurezza Non è Opzionale ma Essenziale`,
             subtitle:    `Ogni giorno, le piccole e medie aziende affrontano minacce informatiche che possono devastare anni di lavoro. Sei protetto?`,
             problems:   {
                 title: `Cosa Potrebbe Accadere Senza una Sicurezza Adeguata`,
                 items:  [
-                    { icon: `💰`, title: `Perdita Finanziaria`, description: `Gli attacchi ransomware possono bloccarti fuori dai sistemi fino a quando paghi—o perdere tutto.` },
-                    { icon: `📉`, title: `Interruzione del Business`, description: `Una singola violazione può bloccare le operazioni per giorni o settimane, costandoti clienti e fatturato.` },
-                    { icon: `⚖️`, title: `Conseguenze Legali`, description: `Le violazioni dei dati attivano notifiche GDPR, multe e potenziali cause legali.` },
-                    { icon: `🏷️`, title: `Danno Reputazionale`, description: `I clienti ti affidano i loro dati. Una violazione può distruggere questa fiducia per sempre.` },
-                    { icon: `🔐`, title: `Accesso Perso`, description: `Gli hacker possono rubare le credenziali, bloccandoti fuori dai tuoi stessi account e sistemi.` },
-                    { icon: `🤝`, title: `Rischio Catena di Fornitura`, description: `Se gli attaccanti compromettono te, possono raggiungere anche i tuoi clienti e partner.` },
+                    {
+                        title:       `Perdita Finanziaria`,
+                        description: `Gli attacchi ransomware possono bloccarti fuori dai sistemi fino a quando paghi o perdi tutto.`,
+                    },
+                    {
+                        title:       `Interruzione del Business`,
+                        description: `Una singola violazione può bloccare le operazioni per giorni o settimane, costandoti clienti e fatturato.`,
+                    },
+                    {
+                        title:       `Conseguenze Legali`,
+                        description: `Le violazioni dei dati attivano notifiche GDPR, multe e potenziali cause legali.`,
+                    },
+                    {
+                        title:       `Danno Reputazionale`,
+                        description: `I clienti ti affidano i loro dati. Una violazione può distruggere questa fiducia per sempre.`,
+                    },
+                    {
+                        title:       `Accesso Perso`,
+                        description: `Gli hacker possono rubare le credenziali, bloccandoti fuori dai tuoi stessi account e sistemi.`,
+                    },
+                    {
+                        title:       `Rischio Catena di Fornitura`,
+                        description: `Se gli attaccanti compromettono te, possono raggiungere anche i tuoi clienti e partner.`,
+                    },
                 ],
             },
             solution: {
                 title:    `È Qui che Entra in Gioco Bastion`,
                 subtitle: `Siamo il tuo team di sicurezza, a protezione della tua azienda 24 ore su 24 così puoi concentrarti su ciò che sai fare meglio.`,
                 features: [
-                    `Monitoriamo i tuoi sistemi 24/7/365—ogni giorno, tutto il giorno`,
+                    `Monitoriamo i tuoi sistemi 24/7/365, ogni giorno, tutto il giorno`,
                     `Rileviamo le minacce prima che diventino violazioni`,
                     `Rispondiamo immediatamente quando qualcosa di sospetto succede`,
                     `Forniamo report chiari che puoi capire`,
@@ -253,16 +308,34 @@ export const translations = {
         monitoring: {
             title:       `Monitoraggio 24/7/365`,
             subtitle:    `La sicurezza non dorme. Noi nemmeno.`,
-            description: `Le minacce informatiche non seguono l'orario d'ufficio. Per questo Bastion monitora la tua infrastruttura continuamente—ogni minuto di ogni giorno, 365 giorni l'anno.`,
-            features:   {
+            description: `Le minacce informatiche non seguono l'orario d'ufficio. Per questo Bastion monitora la tua infrastruttura continuamente, ogni minuto di ogni giorno, 365 giorni l'anno.`,
+            features:    {
                 title:    `Cosa Monitoriamo`,
                 items:    [
-                    { title: ` Traffico di Rete`, description: `Tutte le connessioni in entrata e uscita` },
-                    { title: `Attività Endpoint`, description: `Dispositivi, server e workstation` },
-                    { title: `Comportamento Utente`, description: `Pattern di accesso e tentativi di login` },
-                    { title: `Servizi Cloud`, description: `Ambienti AWS, Azure, Google Cloud` },
-                    { title: `Applicazioni`, description: `Il tuo software aziendale critico` },
-                    { title: `Intelligence sulle Minacce`, description: `Feed globali e rischi emergenti` },
+                    {
+                        title:       `Traffico di Rete`,
+                        description: `Tutte le connessioni in entrata e uscita`,
+                    },
+                    {
+                        title:       `Attività Endpoint`,
+                        description: `Dispositivi, server e workstation`,
+                    },
+                    {
+                        title:       `Comportamento Utente`,
+                        description: `Pattern di accesso e tentativi di login`,
+                    },
+                    {
+                        title:       `Servizi Cloud`,
+                        description: `Ambienti AWS, Azure, Google Cloud`,
+                    },
+                    {
+                        title:       `Applicazioni`,
+                        description: `Il tuo software aziendale critico`,
+                    },
+                    {
+                        title:       `Intelligence sulle Minacce`,
+                        description: `Feed globali e rischi emergenti`,
+                    },
                 ],
             },
             badge: `Sempre Attivo`,
@@ -275,12 +348,12 @@ export const translations = {
                 title:  `SOC Interno Tradizionale`,
                 items:  [
                     `Assunzione e formazione di analisti di sicurezza`,
-                    `Il servizio 24/7 richiede 4-5 dipendenti`,
+                    `il servizio 24/7 richiede 4 o 5 dipendenti`,
                     `Strumenti SIEM, EDR e monitoraggio`,
                     `Infrastruttura e manutenzione`,
                     `Formazione e certificazioni continue`,
                 ],
-                price:     `€4.000 - €12.000`,
+                price:     `da 4.000 a 12.000 euro`,
                 period:   `/mese`,
                 note:     `Solo per il personale.`,
             },
@@ -303,6 +376,7 @@ export const translations = {
         pricing: {
             title:      `Prezzi Semplici e Trasparenti`,
             subtitle:   `Scegli il piano che si adatta alla tua azienda`,
+            popular:    `Più Popolare`,
             plans:      {
                 scudo: {
                     name:        `SCUDO`,
@@ -358,7 +432,7 @@ export const translations = {
                     highlight: false,
                 },
             },
-            note: "* I prezzi sono IVA esclusi. Pacchetti endpoint disponibili per dispositivi aggiuntivi.",
+            note: `* I prezzi sono IVA esclusi. Pacchetti endpoint disponibili per dispositivi aggiuntivi.`,
         },
         faq: {
             title:      `Domande Frequenti`,
@@ -366,23 +440,23 @@ export const translations = {
             items:     [
                 {
                     question: `Che cos'è SOCaaS?`,
-                    answer:  `SOCaaS (Security Operations Center as a Service) significa che forniamo il monitoraggio di sicurezza di livello enterprise che hanno le grandi aziende—senza il costo di costruirlo tu stesso. I nostri analisti esperti monitorano i tuoi sistemi, rilevano minacce e rispondono agli incidenti in tempo reale.`,
+                    answer:   `SOCaaS (Security Operations Center as a Service) significa che forniamo il monitoraggio di sicurezza di livello enterprise che hanno le grandi aziende, senza il costo di costruirlo tu stesso. I nostri analisti esperti monitorano i tuoi sistemi, rilevano minacce e rispondono agli incidenti in tempo reale.`,
                 },
                 {
                     question: `Quanto tempo richiede l'installazione?`,
-                    answer:  `La maggior parte degli ambienti sono operativi in pochi giorni. Lavoriamo con la tua infrastruttura esistente—nessuna installazione complessa o interruzione del tuo business.`,
+                    answer:   `La maggior parte degli ambienti sono operativi in pochi giorni. Lavoriamo con la tua infrastruttura esistente, nessuna installazione complessa o interruzione del tuo business.`,
                 },
                 {
                     question: `Cosa succede se c'è una violazione?`,
-                    answer:  `Se rileviamo attività sospette, ti avvisiamo immediatamente e ti guidiamo attraverso il processo di risposta. I nostri analisti restano con te fino a quando la situazione non è risolta.`,
+                    answer:   `Se rileviamo attività sospette, ti avvisiamo immediatamente e ti guidiamo attraverso il processo di risposta. I nostri analisti restano con te fino a quando la situazione non è risolta.`,
                 },
                 {
                     question: `Posso aggiornare il mio piano successivamente?`,
-                    answer:  `Certo. Man mano che la tua azienda cresce, puoi facilmente passare a un piano superiore. Nessuna frizione, nessuna penalità—solo più protezione quando ne hai bisogno.`,
+                    answer:   `Certo. Man mano che la tua azienda cresce, puoi facilmente passare a un piano superiore. Nessuna frizione, nessuna penalità, solo più protezione quando ne hai bisogno.`,
                 },
                 {
                     question: `Lavorate con le piccole aziende?`,
-                    answer:  `Sì! È esattamente chi serviamo. Capiamo che le PMI non hanno le risorse per un team di sicurezza interno—ma hai comunque bisogno di protezione.`,
+                    answer:   `Sì! È esattamente chi serviamo. Capiamo che le PMI non hanno le risorse per un team di sicurezza interno, ma hai comunque bisogno di protezione.`,
                 },
             ],
         },
@@ -390,8 +464,8 @@ export const translations = {
             title:       `Pronto a Farti Proteggere?`,
             subtitle:    `Prenota una call introduttiva gratuita con il nostro team di sicurezza.`,
             description: `Nessun impegno. Nessuna pressione commerciale. Solo una conversazione sulle tue esigenze di sicurezza e su come Bastion può aiutarti.`,
-            button:     `Prenota la Tua Chiamata Gratuita`,
-            benefits:   [
+            button:      `Prenota la Tua Chiamata Gratuita`,
+            benefits:    [
                 `Ascoltiamo le tue esigenze`,
                 `Nessuna vendita aggressiva`,
                 `Raccomandazioni chiare`,

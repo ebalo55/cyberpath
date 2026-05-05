@@ -46,6 +46,36 @@ function SecurityBackground() {
     );
 }
 
+function SolutionCardBackground() {
+    return (
+        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+            <motion.div
+                animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
+            />
+            <svg className="absolute inset-0 w-full h-full opacity-5" preserveAspectRatio="none">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+            <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-blue-500/10 rotate-45"
+            />
+            <motion.div
+                animate={{ rotate: [0, -360] }}
+                transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+                className="absolute bottom-0 right-0 w-48 h-48 border border-green-500/10 rounded-full"
+            />
+        </div>
+    );
+}
+
 export function SecuritySection({ locale }: SecuritySectionProps) {
     const t = translations[locale].security;
     const icons = [AlertTriangle, Clock, FileCheck, Users, Eye, Shield];
@@ -102,9 +132,11 @@ export function SecuritySection({ locale }: SecuritySectionProps) {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={containerVariants}
-                    className="bg-neutral-900 rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 text-center"
+                    className="relative bg-neutral-900 rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 text-center overflow-hidden"
                 >
-                    <motion.div variants={itemVariants} className="max-w-2xl mx-auto">
+                    <SolutionCardBackground />
+
+                    <motion.div variants={itemVariants} className="max-w-2xl mx-auto relative">
                         <div className="w-14 md:w-16 h-14 md:h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4 md:mb-6">
                             <Shield className="w-7 md:w-8 text-blue-400" />
                         </div>

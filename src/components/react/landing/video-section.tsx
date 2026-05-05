@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Square, Circle, Triangle } from "lucide-react";
+import { Play } from "lucide-react";
 import { translations } from "@/lib/i18n/translations";
 import type { Locale } from "@/lib/i18n/translations";
+import videoSrc from "@assets/video.mp4";
 
 interface VideoSectionProps {
     locale: Locale;
@@ -42,11 +43,6 @@ function VideoBackground() {
                 transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
                 className="absolute bottom-1/4 right-1/4 w-20 h-20 border border-indigo-200/30 rounded-full"
             />
-            <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-200/20 rounded-full blur-2xl"
-            />
         </div>
     );
 }
@@ -79,20 +75,17 @@ export function VideoSection({ locale }: VideoSectionProps) {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={itemVariants}
-                    className="relative aspect-video md:aspect-[21/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-neutral-900 group cursor-pointer"
+                    className="relative aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-neutral-900 group cursor-pointer"
                 >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="w-16 md:w-20 lg:w-24 h-16 md:h-20 lg:h-24 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-all"
-                        >
-                            <Play className="w-8 md:w-10 lg:w-10 text-white ml-1" fill="currentColor" />
-                        </motion.div>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
-                        <span className="text-white/60 text-sm font-medium">CyberPath Bastion - SOCaaS Introduction</span>
+                    <video
+                        src={videoSrc}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        controls
+                        preload="metadata"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/40 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 pointer-events-none">
+                        <span className="text-white/80 text-sm font-medium">CyberPath Bastion - SOCaaS Introduction</span>
                     </div>
                 </motion.div>
             </div>
