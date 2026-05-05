@@ -386,7 +386,6 @@ export default defineConfig({
                         `removeNonInheritableGroupAttrs`,
                         `removeOffCanvasPaths`,
                         `removeRasterImages`,
-                        `removeScriptElement`,
                         `removeTitle`,
                         {
                             name:   `removeUnknownsAndDefaults`,

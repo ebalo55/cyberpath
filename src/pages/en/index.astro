@@ -1,8 +1,14 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Hero } from "@/components/react/landing/hero";
-import { CostComparison } from "@/components/react/landing/cost-comparison";
-import { Plans } from "@/components/react/landing/plans";
+import { VideoSection } from "@/components/react/landing/video-section";
+import { SecuritySection } from "@/components/react/landing/security-section";
+import { MonitoringSection } from "@/components/react/landing/monitoring-section";
+import { ComparisonSection } from "@/components/react/landing/comparison-section";
+import { Pricing } from "@/components/react/landing/pricing";
+import { FAQSection } from "@/components/react/landing/faq-section";
+import { ReservationSection } from "@/components/react/landing/reservation-section";
+import { Cta } from "@/components/react/landing/cta";
 
 const locale = "en";
 
@@ -21,6 +27,12 @@ const json_ld = {
 
 <Layout JSON_LD={ JSON.stringify(json_ld) } seo={ { title: "CyberPath - Bastion SOCaaS", canonical: "https://cyberpath-hq.com/en/", description: "Bastion: Enterprise-grade SOC for businesses." } } locale={locale}>
     <Hero client:load locale={locale} />
-    <CostComparison client:visible locale={locale} />
-    <Plans client:visible locale={locale} />
+    <VideoSection client:visible locale={locale} />
+    <SecuritySection client:visible locale={locale} />
+    <MonitoringSection client:visible locale={locale} />
+    <ComparisonSection client:visible locale={locale} />
+    <Pricing client:visible locale={locale} />
+    <FAQSection client:visible locale={locale} />
+    <ReservationSection client:visible locale={locale} />
+    <Cta client:visible locale={locale} />
 </Layout>

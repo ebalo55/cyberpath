@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Shield, Zap, Building } from "lucide-react";
 import type { Locale } from "@/lib/i18n/translations";
 
 interface PricingProps {
@@ -10,108 +10,118 @@ interface PricingProps {
 
 const translations = {
     en: {
-        title: "Pricing",
-        subtitle: "Flexible plans",
+        title: "Simple, Transparent Pricing",
+        subtitle: "Choose the plan that fits your business",
         plans: {
-            starter: {
-                name: "Starter",
-                description: "Perfect for micro businesses",
-                price: "€490",
+            scudo: {
+                name: "SCUDO",
+                description: "For micro businesses starting their security journey",
+                price: "€190",
                 period: "/month",
-                features: [
-                    "Basic SOC monitoring (business hours)",
-                    "Monthly vulnerability scans",
-                    "Email support",
-                    "Quarterly security reports",
-                    "Up to 10 endpoints",
-                ],
-                cta: "Start Free Trial",
-            },
-            professional: {
-                name: "Professional",
-                description: "Ideal for small businesses",
-                price: "€990",
-                period: "/month",
-                features: [
-                    "Extended SOC monitoring (7am-10pm)",
-                    "Weekly vulnerability scans",
-                    "Priority email & chat support",
-                    "Monthly security reports",
-                    "Up to 50 endpoints",
-                    "Basic incident response",
-                ],
-                cta: "Start Free Trial",
-            },
-            enterprise: {
-                name: "Enterprise",
-                description: "For larger organizations",
-                price: "Custom",
-                period: "",
+                endpoints: "5 endpoints included",
                 features: [
                     "24/7 SOC monitoring",
-                    "Real-time vulnerability scanning",
-                    "Dedicated security analyst",
-                    "Weekly security reports",
-                    "Unlimited endpoints",
-                    "Full incident response",
+                    "Monthly vulnerability scans",
+                    "Quarterly security reports",
+                    "Email & chat support",
+                    "Incident alert notifications",
                     "Compliance assistance",
                 ],
-                cta: "Contact Sales",
+                cta: "Start Free Trial",
+            },
+            fortezza: {
+                name: "FORTEZZA",
+                description: "For small businesses requiring comprehensive protection",
+                price: "€400",
+                period: "/month",
+                endpoints: "10 endpoints included",
+                features: [
+                    "24/7 SOC monitoring",
+                    "Weekly vulnerability scans",
+                    "Monthly security reports",
+                    "Priority support",
+                    "Incident response guidance",
+                    "Regulatory compliance help",
+                    "Threat hunting on request",
+                ],
+                cta: "Start Free Trial",
+            },
+            bastione: {
+                name: "BASTIONE",
+                description: "For businesses needing full-scale security operations",
+                price: "€750",
+                period: "/month",
+                endpoints: "15 endpoints included",
+                features: [
+                    "24/7 SOC priority monitoring",
+                    "Real-time vulnerability scanning",
+                    "Weekly security reports",
+                    "Dedicated security analyst",
+                    "Full incident response",
+                    "Proactive threat hunting",
+                    "Custom compliance reporting",
+                ],
+                cta: "Start Free Trial",
             },
         },
-        note: "* All prices exclude VAT.",
+        note: "* All prices exclude VAT. Endpoint packages available for additional devices.",
     },
     it: {
-        title: "Prezzi",
-        subtitle: "Piani flessibili",
+        title: "Prezzi Semplici e Trasparenti",
+        subtitle: "Scegli il piano che si adatta alla tua azienda",
         plans: {
-            starter: {
-                name: "Starter",
-                description: "Perfetto per micro imprese",
-                price: "€490",
+            scudo: {
+                name: "SCUDO",
+                description: "Per micro aziende che iniziano il percorso di sicurezza",
+                price: "€190",
                 period: "/mese",
-                features: [
-                    "Monitoraggio SOC di base (orario lavorativo)",
-                    "Scansioni mensili delle vulnerabilità",
-                    "Supporto email",
-                    "Report trimestrali sulla sicurezza",
-                    "Fino a 10 endpoint",
-                ],
-                cta: "Inizia Trial Gratuito",
-            },
-            professional: {
-                name: "Professional",
-                description: "Ideale per piccole imprese",
-                price: "€990",
-                period: "/mese",
-                features: [
-                    "Monitoraggio SOC esteso (7-22)",
-                    "Scansioni settimanali delle vulnerabilità",
-                    "Supporto email e chat prioritario",
-                    "Report mensili sulla sicurezza",
-                    "Fino a 50 endpoint",
-                    "Risposta base agli incidenti",
-                ],
-                cta: "Inizia Trial Gratuito",
-            },
-            enterprise: {
-                name: "Enterprise",
-                description: "Per organizzazioni più grandi",
-                price: "Personalizzato",
-                period: "",
+                endpoints: "5 endpoint inclusi",
                 features: [
                     "Monitoraggio SOC 24/7",
-                    "Scansione delle vulnerabilità in tempo reale",
-                    "Analista di sicurezza dedicato",
-                    "Report settimanali sulla sicurezza",
-                    "Endpoint illimitati",
-                    "Risposta completa agli incidenti",
+                    "Scansioni mensili delle vulnerabilità",
+                    "Report trimestrali sulla sicurezza",
+                    "Supporto email e chat",
+                    "Notifiche di alert sugli incidenti",
                     "Assistenza conformità",
                 ],
-                cta: "Contatta le Vendite",
+                cta: "Inizia Trial Gratuito",
+            },
+            fortezza: {
+                name: "FORTEZZA",
+                description: "Per piccole aziende che richiedono protezione completa",
+                price: "€400",
+                period: "/mese",
+                endpoints: "10 endpoint inclusi",
+                features: [
+                    "Monitoraggio SOC 24/7",
+                    "Scansioni settimanali delle vulnerabilità",
+                    "Report mensili sulla sicurezza",
+                    "Supporto prioritario",
+                    "Guida alla risposta agli incidenti",
+                    "Aiuto per la conformità normativa",
+                    "Threat hunting su richiesta",
+                ],
+                cta: "Inizia Trial Gratuito",
+            },
+            bastione: {
+                name: "BASTIONE",
+                description: "Per aziende che necessitano di operazioni di sicurezza complete",
+                price: "€750",
+                period: "/mese",
+                endpoints: "15 endpoint inclusi",
+                features: [
+                    "Monitoraggio SOC prioritario 24/7",
+                    "Scansione delle vulnerabilità in tempo reale",
+                    "Report settimanali sulla sicurezza",
+                    "Analista di sicurezza dedicato",
+                    "Risposta completa agli incidenti",
+                    "Threat hunting proattivo",
+                    "Report sulla conformità personalizzati",
+                ],
+                cta: "Inizia Trial Gratuito",
             },
         },
-        note: "* I prezzi sono IVA esclusa.",
+        note: "* I prezzi sono IVA esclusi. Pacchetti endpoint disponibili per dispositivi aggiuntivi.",
     },
 };
 
@@ -119,12 +129,12 @@ const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+        transition: { staggerChildren: 0.08, delayChildren: 0.15 },
     },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
 };
 
@@ -141,19 +151,23 @@ function PricingBackground() {
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-[100px]"
             />
-            {/* Accent lines */}
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent opacity-50" />
         </div>
     );
 }
 
 export function Pricing({ locale }: PricingProps) {
     const t = translations[locale];
-    const plans = t.plans as Record<"starter" | "professional" | "enterprise", typeof translations.en.plans.starter>;
-    const planKeys = ["starter", "professional", "enterprise"] as const;
+    const plans = t.plans as Record<"scudo" | "fortezza" | "bastione", typeof translations.en.plans.scudo>;
+    const planKeys = ["scudo", "fortezza", "bastione"] as const;
+
+    const icons = {
+        scudo: Shield,
+        fortezza: Zap,
+        bastione: Building,
+    };
 
     return (
-        <section className="py-32 bg-neutral-50 relative overflow-hidden" id="pricing">
+        <section className="py-32 bg-white relative overflow-hidden" id="pricing">
             <PricingBackground />
 
             <div className="max-w-7xl mx-auto px-6">
@@ -164,7 +178,7 @@ export function Pricing({ locale }: PricingProps) {
                     variants={containerVariants}
                     className="text-center mb-16"
                 >
-                    <motion.p variants={itemVariants} className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">
+                    <motion.p variants={itemVariants} className="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">
                         {t.subtitle}
                     </motion.p>
                     <motion.h2 variants={itemVariants} className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-neutral-900">
@@ -172,11 +186,11 @@ export function Pricing({ locale }: PricingProps) {
                     </motion.h2>
                 </motion.div>
 
-                {/* Pricing cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
                     {planKeys.map((key, idx) => {
                         const plan = plans[key];
-                        const isHighlighted = key === "professional";
+                        const Icon = icons[key];
+                        const isHighlighted = key === "fortezza";
 
                         return (
                             <motion.div
@@ -186,10 +200,10 @@ export function Pricing({ locale }: PricingProps) {
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
                                 variants={itemVariants}
-                                className={`relative flex flex-col p-8 rounded-3xl transition-all hover:shadow-2xl ${
+                                className={`relative flex flex-col p-6 lg:p-8 rounded-2xl transition-all duration-300 ${
                                     isHighlighted
-                                        ? "bg-neutral-900 text-white shadow-2xl scale-105 z-10"
-                                        : "bg-white border border-neutral-200 shadow-lg"
+                                        ? "bg-neutral-900 text-white shadow-2xl scale-[1.02] z-10"
+                                        : "bg-white border border-neutral-200 shadow-lg hover:shadow-xl"
                                 }`}
                             >
                                 {isHighlighted && (
@@ -201,6 +215,11 @@ export function Pricing({ locale }: PricingProps) {
                                 )}
 
                                 <div className="mb-6">
+                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                                        isHighlighted ? "bg-blue-500/20" : "bg-blue-50"
+                                    }`}>
+                                        <Icon className={`w-6 h-6 ${isHighlighted ? "text-blue-400" : "text-blue-600"}`} />
+                                    </div>
                                     <h3 className={`text-xl font-bold mb-2 ${isHighlighted ? "text-white" : "text-neutral-900"}`}>
                                         {plan.name}
                                     </h3>
@@ -209,21 +228,26 @@ export function Pricing({ locale }: PricingProps) {
                                     </p>
                                 </div>
 
-                                <div className="mb-6">
+                                <div className="mb-2">
                                     <div className="flex items-baseline gap-1">
-                                        <span className={`text-5xl font-extrabold ${isHighlighted ? "text-white" : "text-neutral-900"}`}>
+                                        <span className={`text-4xl lg:text-5xl font-extrabold ${isHighlighted ? "text-white" : "text-neutral-900"}`}>
                                             {plan.price}
                                         </span>
                                         <span className={`text-sm ${isHighlighted ? "text-neutral-400" : "text-neutral-500"}`}>
                                             {plan.period}
                                         </span>
                                     </div>
+                                    <p className={`text-xs mt-2 ${isHighlighted ? "text-blue-400" : "text-blue-600"}`}>
+                                        {plan.endpoints}
+                                    </p>
                                 </div>
 
-                                <ul className="flex-1 space-y-3 mb-8">
-                                    {plan.features.map((feature: string, fIdx: number) => (
-                                        <li key={fIdx} className="flex items-center gap-3">
-                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isHighlighted ? "bg-blue-500" : "bg-blue-100"}`}>
+                                <ul className="flex-1 space-y-3 my-6">
+                                    {plan.features.map((feature, fIdx) => (
+                                        <li key={fIdx} className="flex items-start gap-3">
+                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                                                isHighlighted ? "bg-blue-500" : "bg-blue-100"
+                                            }`}>
                                                 <Check className={`w-3 h-3 ${isHighlighted ? "text-white" : "text-blue-600"}`} />
                                             </div>
                                             <span className={`text-sm ${isHighlighted ? "text-neutral-300" : "text-neutral-600"}`}>
@@ -234,8 +258,8 @@ export function Pricing({ locale }: PricingProps) {
                                 </ul>
 
                                 <a
-                                    href="#contact"
-                                    className={`w-full py-4 rounded-full text-center font-bold transition-all hover:scale-105 ${
+                                    href="#reservation"
+                                    className={`w-full py-4 rounded-full text-center font-bold transition-all hover:scale-[1.02] ${
                                         isHighlighted
                                             ? "bg-white text-neutral-900 hover:bg-neutral-100"
                                             : "bg-neutral-900 text-white hover:bg-neutral-800"
@@ -252,7 +276,7 @@ export function Pricing({ locale }: PricingProps) {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-12 text-center text-sm text-neutral-500"
+                    className="mt-10 text-center text-sm text-neutral-500"
                 >
                     {t.note}
                 </motion.p>
