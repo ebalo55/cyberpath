@@ -9,16 +9,18 @@ import { AstroSeo } from "@astrolib/seo";
 interface Props {
     JSON_LD?: string;
     seo?: AstroSeoProps;
+    locale?: string;
 }
 
 const {
           seo,
           JSON_LD,
+          locale = "en",
       } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en"
+<html lang={locale}
       class="scroll-smooth scroll-pt-32 overflow-x-hidden"
 >
     <head>

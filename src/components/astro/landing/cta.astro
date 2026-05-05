@@ -1,0 +1,36 @@
+---
+import type { Translations } from "@/lib/i18n/translations";
+import { translations } from "@/lib/i18n/translations";
+
+interface Props {
+    locale: string;
+}
+
+const { locale } = Astro.props;
+const t = translations[locale as keyof typeof translations];
+const cta = t.cta;
+---
+
+<section class="py-24 sm:py-32 bg-neutral-900 relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="mx-auto max-w-4xl px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
+            {cta.title}
+        </h2>
+        <p class="text-lg text-neutral-400 mb-10 max-w-2xl mx-auto">
+            {cta.description}
+        </p>
+        <a href="#contact"
+           class="inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-neutral-900 shadow-2xl hover:bg-neutral-100 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+        >
+            {cta.button}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+        </a>
+    </div>
+</section>

@@ -1,0 +1,91 @@
+---
+import type { Translations } from "@/lib/i18n/translations";
+import { translations } from "@/lib/i18n/translations";
+import { Check } from "lucide-react";
+
+interface Props {
+    locale: string;
+}
+
+const { locale } = Astro.props;
+const t = translations[locale as keyof typeof translations];
+const pricing = t.pricing;
+const plans = pricing.plans;
+const planKeys = ["starter", "professional", "enterprise"] as const;
+---
+
+<section class="py-24 sm:py-32 bg-neutral-50" id="pricing">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center mb-16">
+            <h2 class="text-base font-semibold leading-7 text-blue-600">
+                {pricing.subtitle}
+            </h2>
+            <p class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+                {pricing.title}
+            </p>
+            <p class="mt-4 text-lg text-neutral-600">
+                {pricing.targetNote}
+            </p>
+        </div>
+
+        <div class="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+            {planKeys.map((key: "starter" | "professional" | "enterprise", index: number) => {
+                const plan = plans[key];
+                return (
+                    <div class={`relative flex flex-col rounded-3xl p-8 transition-all duration-500 ${plan.highlight ? "bg-neutral-900 shadow-2xl ring-1 ring-neutral-900 transform scale-105" : "bg-white border-2 border-neutral-200 shadow-xl hover:shadow-2xl hover:-translate-y-2"}`}>
+                        {plan.highlight && (
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                                <span class="inline-flex items-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-1 text-xs font-bold text-white shadow-lg">
+                                    Most Popular
+                                </span>
+                            </div>
+                        )}
+
+                        <div class="mb-6">
+                            <h3 class={`text-xl font-bold mb-2 ${plan.highlight ? "text-white" : "text-neutral-900"}`}>
+                                {plan.name}
+                            </h3>
+                            <p class={`text-sm ${plan.highlight ? "text-neutral-400" : "text-neutral-500"}`}>
+                                {plan.description}
+                            </p>
+                        </div>
+
+                        <div class="mb-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class={`text-4xl font-bold ${plan.highlight ? "text-white" : "text-neutral-900"}`}>
+                                    {plan.price}
+                                </span>
+                                <span class={`text-sm ${plan.highlight ? "text-neutral-400" : "text-neutral-500"}`}>
+                                    {plan.period}
+                                </span>
+                            </div>
+                        </div>
+
+                        <ul class="flex-1 space-y-4 mb-8">
+                            {plan.features.map((feature: string) => (
+                                <li class="flex items-start gap-3">
+                                    <div class={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${plan.highlight ? "bg-blue-500" : "bg-blue-100"}`}>
+                                        <Check className={`w-3 h-3 ${plan.highlight ? "text-white" : "text-blue-600"}`} />
+                                    </div>
+                                    <span class={`text-sm ${plan.highlight ? "text-neutral-300" : "text-neutral-600"}`}>
+                                        {feature}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <a href="#contact"
+                           class={`w-full py-4 px-6 rounded-xl text-center text-base font-semibold transition-all duration-300 ${plan.highlight ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 shadow-lg shadow-blue-900/25 hover:scale-105" : "bg-neutral-900 text-white hover:bg-neutral-800 hover:shadow-xl hover:scale-105"}`}
+                        >
+                            {plan.cta}
+                        </a>
+                    </div>
+                );
+            })}
+        </div>
+
+        <p class="mt-12 text-center text-sm text-neutral-500">
+            {pricing.note}
+        </p>
+    </div>
+</section>

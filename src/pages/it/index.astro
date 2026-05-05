@@ -1,0 +1,28 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Hero from "@/components/astro/landing/hero.astro";
+import Services from "@/components/astro/landing/services.astro";
+import Pricing from "@/components/astro/landing/pricing.astro";
+import CTA from "@/components/astro/landing/cta.astro";
+
+const locale = "it";
+
+const date = new Date();
+const json_ld = {
+    "@type":          "WebPage",
+    "@context":       "https://schema.org",
+    "@id":            "https://cyberpath-hq.com/it/",
+    url:              "https://cyberpath-hq.com/it/",
+    name:             "CyberPath - Bastion SOCaaS",
+    description:      "Bastion: SOC di livello enterprise per aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
+    inLanguage:       "it-IT",
+    datePublished:    `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }`,
+};
+---
+
+<Layout JSON_LD={ JSON.stringify(json_ld) } seo={ { title: "CyberPath - Bastion SOCaaS", canonical: "https://cyberpath-hq.com/it/", description: "Bastion: SOC di livello enterprise per aziende." } } locale={locale}>
+    <Hero locale={locale} />
+    <Services locale={locale} />
+    <Pricing locale={locale} />
+    <CTA locale={locale} />
+</Layout>
