@@ -111,8 +111,8 @@ export function Hero({ locale }: HeroProps) {
     const t = translations[locale].hero;
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 500], [0, 200]);
-    const opacity = useTransform(scrollY, [0, 250], [1, 0]);
-    const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
+    const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+    const scale = useTransform(scrollY, [0, 400], [1, 0.95]);
     const springY = useSpring(y, { stiffness: 100, damping: 30 });
 
     return (

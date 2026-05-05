@@ -37,7 +37,7 @@ const itemVariants = {
 
 function ComparisonBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{
                     x: [
@@ -123,10 +123,10 @@ export function ComparisonSection({
     const t = translations[locale].comparison;
 
     return (
-        <section className="py-20 md:py-28 bg-white relative overflow-hidden" id="comparison">
+        <section className="py-20 md:py-28 relative" id="comparison">
             <ComparisonBackground />
 
-            <div className="max-w-6xl mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 relative">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"

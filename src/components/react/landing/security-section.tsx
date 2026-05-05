@@ -21,7 +21,7 @@ const itemVariants = {
 
 function SecurityBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{ x: [0, 20, 0], y: [0, -30, 0] }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -48,7 +48,7 @@ function SecurityBackground() {
 
 function SolutionCardBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }}
                 transition={{ duration: 4, repeat: Infinity }}

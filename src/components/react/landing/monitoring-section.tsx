@@ -21,7 +21,7 @@ const itemVariants = {
 
 function MonitoringBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -50,10 +50,10 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
     const t = translations[locale].monitoring;
 
     return (
-        <section className="py-20 md:py-28 bg-neutral-50 relative overflow-hidden" id="monitoring">
+        <section className="py-20 md:py-28 relative" id="monitoring">
             <MonitoringBackground />
 
-            <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"

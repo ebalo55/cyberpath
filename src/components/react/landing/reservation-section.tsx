@@ -21,7 +21,7 @@ const itemVariants = {
 
 function ReservationBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -50,7 +50,7 @@ export function ReservationSection({ locale }: ReservationSectionProps) {
     const t = translations[locale].reservation;
 
     return (
-        <section className="py-20 md:py-28 bg-neutral-50 relative overflow-hidden" id="reservation">
+        <section className="py-20 md:py-28 relative" id="reservation">
             <ReservationBackground />
 
             <div className="max-w-4xl mx-auto px-4 md:px-6">

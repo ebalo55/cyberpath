@@ -9,7 +9,7 @@ export const translations = {
         },
         hero: {
             title:       `Bastion`,
-            subtitle:    `SOC as a Service`,
+            subtitle:    `AI SOC as a Service`,
             description: `Enterprise grade security operations for small and medium businesses. Continuous monitoring, threat detection, and incident response at a fraction of the cost of an in house SOC.`,
             cta:         {
                 primary:   `Get Started`,

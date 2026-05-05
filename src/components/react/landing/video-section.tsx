@@ -22,7 +22,7 @@ const itemVariants = {
 
 function VideoBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{ x: [0, 20, 0], y: [0, -20, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -51,7 +51,7 @@ export function VideoSection({ locale }: VideoSectionProps) {
     const t = translations[locale].video;
 
     return (
-        <section className="py-16 md:py-24 bg-neutral-50 relative overflow-hidden">
+        <section className="py-16 md:py-24 relative">
             <VideoBackground />
 
             <div className="max-w-5xl mx-auto px-4 md:px-6">
@@ -75,7 +75,7 @@ export function VideoSection({ locale }: VideoSectionProps) {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={itemVariants}
-                    className="relative aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-neutral-900 group cursor-pointer"
+                    className="relative aspect-video md:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer"
                 >
                     <video
                         src={videoSrc}

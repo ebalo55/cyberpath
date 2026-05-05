@@ -17,7 +17,7 @@ const itemVariants = {
 
 function FAQBackground() {
     return (
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
             <motion.div
                 animate={{ x: [0, 20, 0], y: [0, -20, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -38,7 +38,7 @@ function FAQItem({ item, isOpen, onToggle }: { item: { question: string; answer:
             initial="hidden"
             animate="visible"
             variants={itemVariants}
-            className="border border-neutral-200 rounded-xl overflow-hidden"
+            className="border border-neutral-200 rounded-xl"
         >
             <button
                 onClick={onToggle}
