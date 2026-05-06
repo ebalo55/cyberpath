@@ -40,7 +40,7 @@ const t = translations[locale].nav;
   </nav>
   <div class="hidden lg:hidden" role="dialog" aria-modal="true" id="mobile-menu">
     <div class="fixed inset-0 z-10"></div>
-    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+    <div class="h-dvh fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
       <div class="flex items-center justify-between">
         <a href={`/${locale}/`} class="-m-1.5 p-1.5" title="CyberPath">
           <span class="sr-only"> CyberPath </span>
@@ -72,17 +72,30 @@ const t = translations[locale].nav;
     window.mobile = { is_menu_open: false };
   }
   const mobile_menu = document.getElementById("mobile-menu");
-  if (!mobile_menu) return;
+  if (!mobile_menu) {
+    console.error("Mobile menu element not found");
+  }
+
+  function toggleMobileMenu(open) {
+    if (open) {
+      mobile_menu.style.display = "block";
+      mobile_menu.setAttribute("aria-hidden", "false");
+      window.mobile = { is_menu_open: true };
+    } else {
+      mobile_menu.style.display = "none";
+      mobile_menu.setAttribute("aria-hidden", "true");
+      window.mobile = { is_menu_open: false };
+    }
+  }
+
   const mobile_menu_close = document.getElementById("mobile-menu-close");
   const mobile_menu_open = document.getElementById("mobile-menu-open");
+  toggleMobileMenu(false);
+
   mobile_menu_close?.addEventListener("click", () => {
-    window.mobile.is_menu_open = false;
-    mobile_menu.setAttribute("aria-hidden", "true");
-    mobile_menu.className = "hidden";
+    toggleMobileMenu(false);
   });
   mobile_menu_open?.addEventListener("click", () => {
-    window.mobile.is_menu_open = true;
-    mobile_menu.setAttribute("aria-hidden", "false");
-    mobile_menu.className = "block";
+    toggleMobileMenu(true);
   });
 </script>
