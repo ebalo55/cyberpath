@@ -253,7 +253,7 @@ export function Pricing({
                                 >
                                     {plan.cta}
                                 </a>
-<small className={`text-xs mt-3 ${ isHighlighted ? `text-neutral-500` : `text-neutral-400` }`}>
+                                <small className={`text-xs mt-3 ${ isHighlighted ? `text-neutral-500` : `text-neutral-400` }`}>
                                     {plan.note}
                                 </small>
                             </motion.div>

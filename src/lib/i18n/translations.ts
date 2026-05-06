@@ -65,9 +65,6 @@ export const translations = {
                     `We help you stay compliant with regulations`,
                 ],
             },
-            badge:             `Always On`,
-            live_monitoring:   `Live Monitoring`,
-            proactive_defense: `Proactive Defense`,
         },
         monitoring: {
             title:       `24/7/365 Monitoring`,
@@ -102,7 +99,9 @@ export const translations = {
                     },
                 ],
             },
-            badge: `Always On`,
+            badge:             `Always On`,
+            live_monitoring:   `Live Monitoring`,
+            proactive_defense: `Proactive Defense`,
         },
         comparison: {
             title:       `Cost Comparison`,
@@ -404,7 +403,7 @@ export const translations = {
                         description: `I clienti ti affidano i loro dati. Una violazione può distruggere questa fiducia per sempre.`,
                     },
                     {
-                        title:       `Accesso Perso`,
+                        title:       `Furto di Credenziali`,
                         description: `Gli hacker possono rubare le credenziali, bloccandoti fuori dai tuoi stessi account e sistemi.`,
                     },
                     {
@@ -424,9 +423,6 @@ export const translations = {
                     `Ti aiutiamo a rimanere conforme alle normative`,
                 ],
             },
-            badge:             `Sempre Attivo`,
-            live_monitoring:   `Monitoraggio Live`,
-            proactive_defense: `Difesa Proattiva`,
         },
         monitoring: {
             title:       `Monitoraggio 24/7/365`,
@@ -461,7 +457,9 @@ export const translations = {
                     },
                 ],
             },
-            badge: `Sempre Attivo`,
+            badge:             `Sempre Attivo`,
+            live_monitoring:   `Monitoraggio Live`,
+            proactive_defense: `Difesa Proattiva`,
         },
         comparison: {
             title:       `Confronto Costi`,
@@ -500,7 +498,7 @@ export const translations = {
             title:      `Prezzi Semplici e Trasparenti`,
             subtitle:   `Scegli l'abbonamento più adatto alla tua azienda`,
             popular:   `Più Popolare`,
-            note:      `Tutti gli abbonamenti includono 14 giorni di prova gratuiti al termine dei quali l'abbonamento si rinnova automaticamente. Tutti i prezzi non includono l'IVA. È possibile aggiungere liberamente uno o più endpoint oltre al pacchetto base. Ore di consulenza aggiuntive oltre al pacchetto base possono essere acquistate al costo di 70€/ora, arrotondate all'ora.`,
+            note:      `Tutti gli abbonamenti includono 14 giorni di prova gratuiti al termine dei quali l'abbonamento si rinnova automaticamente. Tutti i prezzi non includono l'IVA. È possibile aggiungere liberamente uno o più endpoint oltre al pacchetto base. Ore di consulenza aggiuntive oltre al pacchetto base possono essere acquistate al costo di 70€/ora, arrotondate all'ora successiva.`,
             plans:     {
                 scudo: {
                     name:        `SCUDO`,

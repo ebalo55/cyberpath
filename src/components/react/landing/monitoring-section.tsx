@@ -110,7 +110,7 @@ export function MonitoringSection({ locale }: MonitoringSectionProps) {
                     transition={{ delay: 0.3 }}
                     className="mt-10 md:mt-16 text-center"
                 >
-                    <div className="inline-flex items-center gap-4 md:gap-6 px-6 md:px-8 py-3 md:py-4 bg-white rounded-full border border-neutral-200 shadow-lg flex-wrap justify-center">
+                    <div className="hidden md:inline-flex items-center gap-4 md:gap-6 px-6 md:px-8 py-3 md:py-4 bg-white rounded-full border border-neutral-200 shadow-lg flex-wrap justify-center">
                         <div className="flex items-center gap-2">
                             <motion.div
                                 animate={{ scale: [1, 1.3, 1] }}

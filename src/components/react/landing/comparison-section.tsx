@@ -238,7 +238,7 @@ export function ComparisonSection({
                                     ))}
                                 </ul>
 
-                                <div className="pt-4 md:pt-6 border-t border-white/10 flex items-center justify-between">
+                                <div className="pt-4 md:pt-6 border-t border-white/10 md:flex items-center justify-between">
                                     <div>
                                         <span className="text-2xl md:text-3xl font-bold text-white">{t.bastion.price}</span>
                                         <span className="text-base text-neutral-400 font-normal ml-1">{t.bastion.period}</span>
@@ -256,7 +256,7 @@ export function ComparisonSection({
                                         transition={{
                                             delay: 0.2,
                                         }}
-                                        className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-green-500/20 text-green-400 text-xs md:text-sm font-bold rounded-full"
+                                        className="mt-3 md:mt-0 inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-green-500/20 text-green-400 text-xs md:text-sm font-bold rounded-full"
                                     >
                                         <TrendingDown className="w-3 md:w-4" />
                                         {t.bastion.savings}
