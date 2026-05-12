@@ -1,6 +1,7 @@
 import {
-    defineCollection, z
+    defineCollection
 } from "astro:content";
+import { z } from 'astro/zod';
 import { CareerPathsList } from "./lib/career-paths.ts";
 import { glob } from 'astro/loaders';
 import { BLOG_COLLECTION_LOADER } from "./lib/blog-collection-loader.ts";

@@ -26,3 +26,4 @@ pnpm-debug.log*
 .vscode/**
 *.prompt
 BLOG_FEATURES.md
+.opencode

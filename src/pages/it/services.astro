@@ -1,0 +1,48 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { ServicesHero } from "@/components/react/landing/services-hero";
+import { ServicesSection } from "@/components/react/landing/services-section";
+import { ReservationSection } from "@/components/react/landing/reservation-section";
+import { makeJsonLd } from "@/lib/make-json-ld";
+import type { WebSite } from "schema-dts";
+
+const locale = "it";
+
+const json_ld = makeJsonLd<WebSite>({
+    "@type": "WebSite",
+    "@context": "https://schema.org",
+    "@id": "https://cyberpath-hq.com/it/services",
+    url: "https://cyberpath-hq.com/it/services",
+    name: "CyberPath - Servizi",
+    description: "I nostri servizi di cybersecurity: SOCaaS, penetration test, formazione sulla sicurezza e soluzioni backup sicure.",
+    inLanguage: "it-IT",
+    author: {
+        "@type": "Organization",
+        name: "CyberPath",
+        url: "https://cyberpath-hq.com",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "CyberPath",
+    },
+});
+---
+
+<Layout 
+    JSON_LD={ json_ld } 
+    seo={{ 
+        title: "CyberPath Servizi | Soluzioni di Cybersecurity per Aziende", 
+        canonical: "https://cyberpath-hq.com/it/services", 
+        description: "Esplora i nostri servizi di cybersecurity: SOCaaS (Bastion), penetration test, formazione sulla sicurezza e backup sicuro. Protezione di livello enterprise per la tua azienda.",
+        openGraph: {
+            title: "CyberPath - Servizi",
+            description: "Servizi di cybersecurity per aziende",
+            type: "website",
+            url: "https://cyberpath-hq.com/it/services",
+        }
+    }} 
+    locale={locale}
+>
+    <ServicesHero client:load locale={locale} />
+    <ServicesSection client:visible locale={locale} />
+</Layout>

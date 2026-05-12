@@ -1,0 +1,59 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Hero } from "@/components/react/landing/hero";
+import { VideoSection } from "@/components/react/landing/video-section";
+import { SecuritySection } from "@/components/react/landing/security-section";
+import { MonitoringSection } from "@/components/react/landing/monitoring-section";
+import { ComparisonSection } from "@/components/react/landing/comparison-section";
+import { Pricing } from "@/components/react/landing/pricing";
+import { FAQSection } from "@/components/react/landing/faq-section";
+import { ReservationSection } from "@/components/react/landing/reservation-section";
+import { makeJsonLd } from "@/lib/make-json-ld";
+import type { WebSite } from "schema-dts";
+
+const locale = "it";
+
+const json_ld = makeJsonLd<WebSite>({
+    "@type": "WebSite",
+    "@context": "https://schema.org",
+    "@id": "https://cyberpath-hq.com/",
+    url: "https://cyberpath-hq.com/",
+    name: "CyberPath - Bastion SOCaaS",
+    description: "Bastion: SOC come servizio di livello enterprise per piccole e medie aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
+    inLanguage: "it-IT",
+    author: {
+        "@type": "Organization",
+        name: "CyberPath",
+        url: "https://cyberpath-hq.com",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "CyberPath",
+    },
+});
+---
+
+<Layout 
+    JSON_LD={ json_ld } 
+    seo={{ 
+        title: "CyberPath - Bastion SOCaaS | Sicurezza Enterprise per PMI", 
+        canonical: "https://cyberpath-hq.com/it/", 
+        description: "Bastion offre SOC come servizio di livello enterprise per piccole e medie aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
+        openGraph: {
+            title: "CyberPath - Bastion SOCaaS",
+            description: "SOC come servizio di livello enterprise per piccole e medie aziende",
+            type: "website",
+            url: "https://cyberpath-hq.com/it/",
+        }
+    }} 
+    locale={locale}
+>
+    <Hero client:load locale={locale} />
+    <VideoSection client:visible locale={locale} />
+    <SecuritySection client:visible locale={locale} />
+    <MonitoringSection client:visible locale={locale} />
+    <ComparisonSection client:visible locale={locale} />
+    <Pricing client:visible locale={locale} />
+    <FAQSection client:visible locale={locale} />
+    <ReservationSection client:visible locale={locale} />
+</Layout>

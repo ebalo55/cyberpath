@@ -1,84 +1,49 @@
 ---
 import MadeInEu from '@/assets/made-in-eu.svg';
 import { Image } from 'astro:assets';
+import { translations } from "@/lib/i18n/translations";
+import type { Locale } from "@/lib/i18n/translations";
+
+interface Props {
+    locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props;
+const t = translations[locale].nav;
 ---
 
 <footer class="bg-white/25 border-t z-50 relative overflow-hidden">
-    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8 space-y-6">
-        <nav class="columns-2 sm:flex sm:justify-center sm:space-x-12"
+    <div class="mx-auto max-w-7xl overflow-hidden px-4 md:px-6 py-12 md:py-20 space-y-6">
+        <nav class="grid grid-cols-2 sm:flex sm:justify-center sm:gap-x-8 md:gap-x-12 gap-y-4"
              aria-label="Footer"
         >
-            <div class="pb-6 lg:pb-0">
-                <a href="/"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Home"
-                >
-                    Home
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="/blog"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Blog"
-                >
-                    Blog
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="https://github.com/cyberpath-HQ"
-                   target="_blank"
-                   rel="noopener"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="GitHub"
-                >
-                    GitHub
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="https://discord.gg/WmPc56hYut"
-                   target="_blank"
-                   rel="noopener"
-                   class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Discord Community"
-                >
-                    Discord
-                </a>
-            </div>
-            <div class="pb-6 lg:pb-0">
-                <a href="#"
-                   class="termly-display-preferences text-sm leading-6 text-gray-600 hover:text-gray-900"
-                   title="Consent preferences"
-                >
-                    Consent preferences
-                </a>
-            </div>
+            <a href={`/${locale}/`}
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.home}
+            >
+                {t.home}
+            </a>
+            <a href="/blog"
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.blog}
+            >
+                {t.blog}
+            </a>
+            <a href={`/${locale}/services`}
+               class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-center"
+               title={t.services}
+            >
+                {t.services}
+            </a>
+            <a href="#"
+               class="termly-display-preferences text-sm leading-6 text-gray-600 hover:text-gray-900 text-center md:col-span-2 sm:col-span-1"
+               title="Consent preferences"
+            >
+                {translations[locale].footer.consent_preferences}
+            </a>
         </nav>
         <p class="text-center text-xs leading-5 text-gray-500 flex items-center justify-center flex-wrap">
-            Brought to you with
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="18"
-                 height="18"
-                 viewBox="0 0 24 24"
-                 fill="currentColor"
-                 class="icon icon-tabler icons-tabler-filled icon-tabler-heart text-red-600 mx-1"
-            >
-                <path stroke="none"
-                      d="M0 0h24v24H0z"
-                      fill="none"
-                />
-                <path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" />
-            </svg>
-            by
-            <a href="https://ebalo.xyz"
-               class="font-semibold text-indigo-600 hover:text-indigo-500 ml-1"
-               target="_blank"
-               rel="noopener"
-               title="Ebalo's personal website"
-            >
-                Ebalo
-            </a>
-            <span class="mr-1">.</span>
-            All rights reserved.
+            &copy; {new Date().getFullYear()} CyberPath. {translations[locale].footer.copyright}
         </p>
     <Image src={MadeInEu} alt="Made in Europe" class="mx-auto max-h-10" />
     </div>
