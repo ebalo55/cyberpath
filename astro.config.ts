@@ -66,7 +66,7 @@ export default defineConfig({
             gfm:                  true,
             optimize:             true,
         }),
-        playformInline({
+        /* playformInline({
             Beasties: {
                 minimumExternalSize: 1024, // 1 KB
                 pruneSource:         true,
@@ -86,7 +86,7 @@ export default defineConfig({
                 },
             },
 
-            /* HTML: {
+            HTML: {
                 "html-minifier-terser": {
                     caseSensitive:                 false,
                     collapseBooleanAttributes:     true,
@@ -116,7 +116,7 @@ export default defineConfig({
                     sortClassName:                 true,
                     removeTagWhitespace:           false,
                 },
-            }, */
+            },
             JavaScript: {
                 terser: {
                     compress: {
@@ -417,7 +417,7 @@ export default defineConfig({
                     ],
                 },
             },
-        }),
+        }), */
     ],
     build:        {
         assets: `assets`,
