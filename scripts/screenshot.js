@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /*
  * This script takes a screenshot of the Astro application running in development mode.
  * It uses Puppeteer to launch a headless browser, navigate to the Astro app, and take a screenshot.
@@ -15,7 +16,10 @@ import { promisify } from "util";
 
 const readdir = promisify(fs.readdir);
 
-const url = `http://localhost:4321/`;
+const urls = {
+    en: `http://localhost:4321/en/`,
+    it: `http://localhost:4321/it/`,
+};
 
 /**
  * Start the Astro development server and return the ChildProcess instance
@@ -87,9 +91,9 @@ async function initPuppeteer() {
  * @param page
  * @returns {Promise<void>}
  */
-async function focusOnTarget(page) {
+async function focusOnTarget(page, locale) {
     // Navigate to the page
-    await page.goto(url, {
+    await page.goto(urls[locale], {
         waitUntil: `networkidle2`,
     });
 
@@ -104,68 +108,59 @@ async function focusOnTarget(page) {
 
 /**
  * Get the target filename of the screenshot, based on the generated file name
- * @returns {Promise<string>}
+ * @returns {string}
  */
-async function getTargetFilename() {
-    const files = await readdir(`.`);
-
-    const target = files.filter((file) => file.startsWith(`CyberPath`) && file.endsWith(`.webp`)
-    );
-
-    if (target.length === 0) {
-        return `./CyberPath-og.webp`;
-    }
-
-    return target[0];
+function getTargetFilename(locale) {
+    return `./CyberPath-og-${ locale }.webp`;
 }
 
 async function main() {
-    // lazily compute the target filename
-    const target_filename_promise = getTargetFilename();
-
     // start the process
     const astro_dev_server  = await startServer();
-    const {
-        page, browser,
-    } = await initPuppeteer();
-    await focusOnTarget(page);
 
-    // Take the screenshot
-    const screenshotBuffer = await page.screenshot();
+    for (const locale of Object.keys(urls)) {
+        const {
+            page, browser,
+        } = await initPuppeteer();
+        await focusOnTarget(page, locale);
 
-    // Close the browser
-    await browser.close();
+        // Take the screenshot
+        const screenshotBuffer = await page.screenshot();
 
-    // Define output path and filename
-    const outputDir      = `./dist/assets`;
-    const outputFilename = await target_filename_promise;
-    const outputFilePath = path.join(outputDir, outputFilename);
+        // Close the browser
+        await browser.close();
 
-    // Ensure the output directory exists
-    if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, {
-            recursive: true,
-        });
+        // Define output path and filename
+        const outputDir      = `./dist/assets`;
+        const outputFilename = getTargetFilename(locale);
+        const outputFilePath = path.join(outputDir, outputFilename);
+
+        // Ensure the output directory exists
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, {
+                recursive: true,
+            });
+        }
+
+        const image             = sharp(screenshotBuffer);
+        const {
+            width, height,
+        } = await image.metadata();
+
+        // Optimize the screenshot using Sharp and save it as WebP
+        await image.extract({
+            left:  300,
+            top:   0,
+            width: width - 600,
+            height,
+        })
+            .webp({
+                quality: 80,
+            }) // Adjust quality as needed
+            .toFile(outputFilePath);
+
+        console.log(`Screenshot saved to: ${ outputFilePath }`);
     }
-
-    const image             = sharp(screenshotBuffer);
-    const {
-        width, height,
-    } = await image.metadata();
-
-    // Optimize the screenshot using Sharp and save it as WebP
-    await image.extract({
-        left:  300,
-        top:   0,
-        width: width - 600,
-        height,
-    })
-        .webp({
-            quality: 80,
-        }) // Adjust quality as needed
-        .toFile(outputFilePath);
-
-    console.log(`Screenshot saved to: ${ outputFilePath }`);
 
     // Kill the dev server
     const is_killed = astro_dev_server.kill(`SIGKILL`);
