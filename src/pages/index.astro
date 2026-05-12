@@ -21,7 +21,7 @@ const json_ld = {
     <script is:inline>
         const lang = navigator.language || navigator.userLanguage || "en";
         const locale = lang.startsWith("it") ? "/it/" : "/en/";
-        window.location.href = locale;
+        window.location.href.replace(locale);
     </script>
 </head>
 <body>
