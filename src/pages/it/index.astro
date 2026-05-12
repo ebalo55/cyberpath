@@ -14,46 +14,56 @@ import type { WebSite } from "schema-dts";
 const locale = "it";
 
 const json_ld = makeJsonLd<WebSite>({
-    "@type": "WebSite",
-    "@context": "https://schema.org",
-    "@id": "https://cyberpath-hq.com/",
-    url: "https://cyberpath-hq.com/",
-    name: "CyberPath - Bastion SOCaaS",
-    description: "Bastion: SOC come servizio di livello enterprise per piccole e medie aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
-    inLanguage: "it-IT",
-    author: {
-        "@type": "Organization",
-        name: "CyberPath",
-        url: "https://cyberpath-hq.com",
-    },
-    publisher: {
-        "@type": "Organization",
-        name: "CyberPath",
-    },
+  "@type": "WebSite",
+  "@context": "https://schema.org",
+  "@id": "https://cyberpath-hq.com/",
+  url: "https://cyberpath-hq.com/",
+  name: "CyberPath - Bastion SOCaaS",
+  description:
+    "Bastion: SOC come servizio di livello enterprise per piccole e medie aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
+  inLanguage: "it-IT",
+  author: {
+    "@type": "Organization",
+    name: "CyberPath",
+    url: "https://cyberpath-hq.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "CyberPath",
+  },
 });
 ---
 
-<Layout 
-    JSON_LD={ json_ld } 
-    seo={{ 
-        title: "CyberPath - Bastion SOCaaS | Sicurezza Enterprise per PMI", 
-        canonical: "https://cyberpath-hq.com/it/", 
-        description: "Bastion offre SOC come servizio di livello enterprise per piccole e medie aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
-        openGraph: {
-            title: "CyberPath - Bastion SOCaaS",
-            description: "SOC come servizio di livello enterprise per piccole e medie aziende",
-            type: "website",
-            url: "https://cyberpath-hq.com/it/",
-        }
-    }} 
-    locale={locale}
+<Layout
+  JSON_LD={json_ld}
+  seo={{
+    title: "CyberPath - Bastion SOCaaS | Sicurezza Enterprise per PMI",
+    canonical: "https://cyberpath-hq.com/it/",
+    description:
+      "Bastion offre SOC come servizio di livello enterprise per piccole e medie aziende. Monitoraggio sicurezza 24/7, rilevamento minacce e risposta agli incidenti.",
+    openGraph: {
+      title: "CyberPath - Bastion SOCaaS",
+      description: "SOC come servizio di livello enterprise per piccole e medie aziende",
+      type: "website",
+      url: "https://cyberpath-hq.com/it/",
+      images: [
+        {
+          url: "https://cyberpath-hq.com/assets/CyberPath-og-it.webp",
+          width: 1320,
+          height: 800,
+          alt: "CyberPath - Bastion SOCaaS",
+        },
+      ],
+    },
+  }}
+  locale={locale}
 >
-    <Hero client:load locale={locale} />
-    <VideoSection client:visible locale={locale} />
-    <SecuritySection client:visible locale={locale} />
-    <MonitoringSection client:visible locale={locale} />
-    <ComparisonSection client:visible locale={locale} />
-    <Pricing client:visible locale={locale} />
-    <FAQSection client:visible locale={locale} />
-    <ReservationSection client:visible locale={locale} />
+  <Hero client:load locale={locale} />
+  <VideoSection client:visible locale={locale} />
+  <SecuritySection client:visible locale={locale} />
+  <MonitoringSection client:visible locale={locale} />
+  <ComparisonSection client:visible locale={locale} />
+  <Pricing client:visible locale={locale} />
+  <FAQSection client:visible locale={locale} />
+  <ReservationSection client:visible locale={locale} />
 </Layout>
