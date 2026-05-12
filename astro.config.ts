@@ -85,7 +85,8 @@ export default defineConfig({
                     restructure: true,
                 },
             },
-            HTML: {
+
+            /* HTML: {
                 "html-minifier-terser": {
                     caseSensitive:                 false,
                     collapseBooleanAttributes:     true,
@@ -115,7 +116,7 @@ export default defineConfig({
                     sortClassName:                 true,
                     removeTagWhitespace:           false,
                 },
-            },
+            }, */
             JavaScript: {
                 terser: {
                     compress: {
