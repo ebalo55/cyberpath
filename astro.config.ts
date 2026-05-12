@@ -76,7 +76,7 @@ export default defineConfig({
                 keyframes:           `critical`,
                 compress:            true,
             },
-        }),
+        }), */
         playformCompress({
             CSS: {
                 csso: {
@@ -85,7 +85,6 @@ export default defineConfig({
                     restructure: true,
                 },
             },
-
             HTML: {
                 "html-minifier-terser": {
                     caseSensitive:                 false,
@@ -417,7 +416,7 @@ export default defineConfig({
                     ],
                 },
             },
-        }), */
+        }),
     ],
     build:        {
         assets: `assets`,
